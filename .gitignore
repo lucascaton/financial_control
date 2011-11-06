@@ -1,5 +1,14 @@
+*.swo
+*.swp
+*DS_Store
+*~
 .bundle
-db/*.sqlite3
-log/*.log
-tmp/
+.rvmrc
 .sass-cache/
+.webbynode/
+Session.vim
+capybara-*
+config/database.yml
+log/*.log
+tags
+tmp/
