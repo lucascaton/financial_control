@@ -15,7 +15,7 @@
       %td=user.email
       %td=l user.created_at
       %td.last
-        =link_to t('web-app-theme.edit'), edit_user_registration_path(user)
+        =link_to t('web-app-theme.edit'), edit_user_path(user)
         -# |
         -# =link_to t('web-app-theme.delete'), user_path(user)', :method => :delete, :confirm => '#{t('web-app-theme.confirm', :default => 'Are you sure?')}'}
 
