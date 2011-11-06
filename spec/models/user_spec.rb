@@ -25,4 +25,6 @@ describe User do
   it 'has a valid factory' do
     FactoryGirl.build(:user).should be_valid
   end
+
+  it { should validate_presence_of :name }
 end
