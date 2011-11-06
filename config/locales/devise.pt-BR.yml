@@ -7,7 +7,7 @@ pt-BR:
 
   devise:
     failure:
-      unauthenticated: 'Para continuar, faça login ou registre-se.'
+      unauthenticated: 'Para continuar, faça login!'
       unconfirmed: 'Antes de continuar, confirme a sua conta.'
       locked: 'Sua conta está bloqueada.'
       invalid: 'Email ou senha inválidos.'
@@ -30,3 +30,6 @@ pt-BR:
         subject: 'Instruções de confirmação'
       reset_password_instructions:
         subject: 'Instruções de reinicialização de senha'
+    sessions:
+      user:
+        signed_in: 'Login realizado com sucesso'

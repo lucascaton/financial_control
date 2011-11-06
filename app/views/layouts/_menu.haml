@@ -1,0 +1,3 @@
+%ul.wat-cf
+  -if current_user.try(:admin)
+    %li=link_to 'Usuários', users_path

@@ -10,11 +10,11 @@
       #header
         %h1=link_to 'Financial Control', root_path
         #main-navigation
-          %ul.wat-cf
-            %li=link_to 'Usuários', users_path
-        #user-navigation
-          %ul.wat-cf
-            %li=link_to 'Logged user', '#'
+          =render :partial => 'layouts/menu'
+        -if current_user
+          #user-navigation
+            %ul.wat-cf
+              %li="#{current_user.name} (#{link_to 'Sair', destroy_user_session_path, :method => :delete})".html_safe
         #wrapper.wat-cf
           #main
             .block

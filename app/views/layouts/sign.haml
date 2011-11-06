@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title Financial Control
+    =stylesheet_link_tag 'web_app_theme'
+    =csrf_meta_tags
+  %body
+    #container
+      #box
+        %h1 Financial Control
+        .block#block-login
+          %h2.title Autenticação
+          .content.login
+            .flash
+              -flash.each do |type, message|
+                %div{:class => "message #{type}"}
+                  %p=message
+            =yield

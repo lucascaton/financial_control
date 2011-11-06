@@ -355,7 +355,7 @@ hr {
 .flash .message p {
   margin: 8px;
 }
-.flash .error, .flash .error-list {
+.flash .error, .flash .error-list, .flash .alert, .flash .alert-list {
   border: 1px solid #993624;
   background: #cc4831 url("images/messages/error.png") no-repeat 10px center;
 }
@@ -369,14 +369,14 @@ hr {
   border: 1px solid #8a9daa;
   background: #b8d1e2 url("images/messages/notice.png") no-repeat 10px center;
 }
-.flash .error-list {
+.flash .error-list, .flash .alert-list {
   text-align: left;
 }
-.flash .error-list h2 {
+.flash .error-list h2, .flash .alert-list h2 {
   font-size: 16px;
   text-align: center;
 }
-.flash .error-list ul {
+.flash .error-list ul, .flash .alert-list ul {
   padding-left: 22px;
   line-height: 18px;
   list-style-type: square;

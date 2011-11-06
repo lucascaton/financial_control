@@ -2,6 +2,7 @@ pt-BR:
   web-app-theme:
     save: Salvar
     cancel: Cancelar
+    login: Autenticar
     list: Lista
     edit: Editar
     new: Novo
