@@ -1,6 +1,6 @@
 h1. About
 
-"Financial Control" is a Rails application for manager your finances.
+"Financial Control" is a Rails application to manage your finances.
 
 h1. Installation & Usage
 
