@@ -5,5 +5,5 @@
 .block
   %h3 Ações
   %ul.navigation
-    %li
-      %a{:href => "#"} Cadastrar novo usuário
+    %li=link_to 'Ver todos os usuários', users_path
+    %li=link_to 'Cadastrar novo usuário', new_user_path
