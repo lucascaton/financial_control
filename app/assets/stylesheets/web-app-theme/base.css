@@ -16,7 +16,7 @@
 .wat-cf {display: block;}
 /* End hide from IE-mac */
 
-h1 { margin: 15px 0; font-size: 22px; font-weight: normal; }
+h1 { margin: 15px 0; font-size: 22px; font-weight: normal;}
 h2 { font-size: 22px; margin: 15px 0; font-weight: normal;}
 h3 { font-size: 18px; margin: 10px 0; font-weight: normal;}
 h4 { font-size: 16px; margin: 10px 0; font-weight: normal;}
@@ -107,6 +107,7 @@ body {
 #main .block {
   margin-bottom: 20px;
   padding-top: 1px;
+  min-height: 300px;
 }
 
 #main .block .content .inner {

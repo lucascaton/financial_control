@@ -7,3 +7,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function(){
+  configure_external_links();
+});
+
+function configure_external_links(){
+  $('.external').click(function(){
+    window.open($(this).attr('href'));
+    return false;
+  });
+}
