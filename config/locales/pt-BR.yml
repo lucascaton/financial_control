@@ -6,6 +6,7 @@ pt-BR:
         other: '%{model} não pôde ser salvo: %{count} erros.'
       body: 'Por favor, cheque os seguintes campos:'
     messages:
+      not_saved: 'não pôde ser salvo'
       accepted: 'precisa ser aceito'
       blank: 'não pode ficar em branco'
       confirmation: 'não bate com a confirmação'
