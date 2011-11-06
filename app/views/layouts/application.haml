@@ -6,8 +6,33 @@
     =javascript_include_tag 'application'
     =csrf_meta_tags
   %body
-    .flash
-      -flash.each do |type, message|
-        %div{:class => "message #{type}"}
-          =message
-    =yield
+    #container
+      #header
+        %h1=link_to 'Financial Control', 'root_path'
+        #main-navigation
+          %ul.wat-cf
+            %li=link_to 'Usuários', 'users_path'
+        #user-navigation
+          %ul.wat-cf
+            %li=link_to 'Logged user', '#'
+        #wrapper.wat-cf
+          #main
+            .block
+              .secondary-navigation
+                =yield :secondary_navigation
+              .content
+                %h2.title
+                  =yield :block_title
+                .inner
+                  .flash
+                    -flash.each do |type, message|
+                      %div{:class => "message #{type}"}
+                        %p=message
+                  =yield
+
+          #sidebar
+            =yield :sidebar
+
+        #footer
+          #block
+            %p Copyright &copy; #{Date.today.year} Financial Control
