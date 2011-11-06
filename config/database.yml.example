@@ -1,0 +1,29 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: financial_control_development
+  pool: 5
+  username: postgres
+  password: secret
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: financial_control_test
+  pool: 5
+  username: postgres
+  password: secret
+  host: localhost
+  port: 5432
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: financial_control
+  pool: 5
+  username: postgres
+  password: secret
+  host: localhost
+  port: 5432
