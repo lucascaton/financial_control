@@ -18,7 +18,7 @@ group :development do
   # gem 'bullet'
   gem 'ruby-debug'
   gem 'silent-postgres'
-  gem 'web-app-theme'
+  gem 'web-app-theme', '~> 0.8.0'
 end
 
 # Gems used only for assets and not required

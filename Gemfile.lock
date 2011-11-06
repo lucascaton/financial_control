@@ -205,5 +205,5 @@ DEPENDENCIES
   simple_form
   uglifier (>= 1.0.3)
   unicorn
-  web-app-theme
+  web-app-theme (~> 0.8.0)
   will_paginate
