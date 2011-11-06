@@ -4,10 +4,6 @@
     =f.text_field :name, :class => 'text_field'
     %span.description Nome completo
   .group
-    =f.label :group_id, :class => :label
-    =f.select :group_id, [['teste', 1]] # Group.all.map { |group| [group.name, group.id] }
-    %span.description Selecione o grupo que este usuário irá pertencer
-  .group
     =f.label :email, :class => :label
     =f.text_field :email, :class => 'text_field'
   .group

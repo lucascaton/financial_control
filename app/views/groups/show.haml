@@ -1,0 +1,10 @@
+-content_for :block_title, "Grupo '#{@group.name}'"
+-content_for :sidebar, render(:partial => 'sidebar')
+
+Usuários:
+=@group.users_humanize
+
+-# %span.description Selecione o grupo que este usuário irá pertencer
+
+.actions-bar.wat-cf
+  .actions

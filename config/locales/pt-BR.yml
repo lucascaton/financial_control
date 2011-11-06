@@ -49,9 +49,15 @@ pt-BR:
     attributes:
       user:
         name: 'Nome'
-        group_id: 'Grupo'
+        groups: 'Grupos'
         email: 'E-mail'
         password: 'Senha'
         password_confirmation: 'Confirmação de senha'
         admin: 'Administrador?'
         active: 'Ativo?'
+      group:
+        name: 'Nome'
+        users: 'Usuários'
+      partnership:
+        group_id: 'Grupo'
+        user_id: 'Usuário'

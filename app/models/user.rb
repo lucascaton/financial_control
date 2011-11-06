@@ -4,7 +4,6 @@
 #
 #  id                     :integer         not null, primary key
 #  name                   :string(255)
-#  group_id               :integer
 #  email                  :string(255)     default(""), not null
 #  encrypted_password     :string(128)     default(""), not null
 #  reset_password_token   :string(255)
@@ -28,8 +27,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :group_id, :admin, :active
+  attr_accessible :name, :admin, :active
   attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  has_many :partnerships
+  has_many :groups, :through => :partnerships
 
   validates_presence_of :name
 

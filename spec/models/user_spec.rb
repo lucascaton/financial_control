@@ -4,7 +4,6 @@
 #
 #  id                     :integer         not null, primary key
 #  name                   :string(255)
-#  group_id               :integer
 #  email                  :string(255)     default(""), not null
 #  encrypted_password     :string(128)     default(""), not null
 #  reset_password_token   :string(255)
@@ -27,6 +26,9 @@ describe User do
   it 'has a valid factory' do
     FactoryGirl.build(:user).should be_valid
   end
+
+  it { should have_many(:partnerships) }
+  it { should have_many(:groups).through(:partnerships) }
 
   it { should validate_presence_of :name }
 

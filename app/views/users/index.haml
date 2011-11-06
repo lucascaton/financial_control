@@ -9,15 +9,17 @@
     %th=t 'web-app-theme.created_at'
     %th=t 'activerecord.attributes.user.admin'
     %th=t 'activerecord.attributes.user.active'
+    %th=t 'activerecord.attributes.user.groups'
     %th.last &nbsp;
   -@users.each do |user|
     %tr{:class => cycle('odd', 'even')}
       %td=user.id
       %td=user.name
       %td=user.email
-      %td=l user.created_at
+      %td=l user.created_at, :format => :short
       %td=t user.admin.to_s
       %td=t user.active.to_s
+      %td=user.groups.map{ |group| link_to(group.name, group) }.join(', ').html_safe
       %td.last=link_to t('web-app-theme.edit'), edit_user_path(user)
 
 .actions-bar.wat-cf
