@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.order('name')
   end
 
   def show
@@ -38,12 +38,5 @@ class UsersController < ApplicationController
     else
       render :action => 'edit'
     end
-  end
-
-  def destroy
-    @user = User.find params[:id]
-    # @user.destroy
-    flash[:notice] = 'Usuário desativado com sucesso.'
-    redirect_to users_path
   end
 end

@@ -1,4 +1,6 @@
 pt-BR:
+  'true': 'Sim'
+  'false': 'Não'
   errors:
     template:
       header:
@@ -51,3 +53,5 @@ pt-BR:
         email: 'E-mail'
         password: 'Senha'
         password_confirmation: 'Confirmação de senha'
+        admin: 'Administrador?'
+        active: 'Ativo?'

@@ -7,6 +7,8 @@
     %th=t 'activerecord.attributes.user.name'
     %th=t 'activerecord.attributes.user.email'
     %th=t 'web-app-theme.created_at'
+    %th=t 'activerecord.attributes.user.admin'
+    %th=t 'activerecord.attributes.user.active'
     %th.last &nbsp;
   -@users.each do |user|
     %tr{:class => cycle('odd', 'even')}
@@ -14,10 +16,9 @@
       %td=user.name
       %td=user.email
       %td=l user.created_at
-      %td.last
-        =link_to t('web-app-theme.edit'), edit_user_path(user)
-        -# |
-        -# =link_to t('web-app-theme.delete'), user_path(user)', :method => :delete, :confirm => '#{t('web-app-theme.confirm', :default => 'Are you sure?')}'}
+      %td=t user.admin.to_s
+      %td=t user.active.to_s
+      %td.last=link_to t('web-app-theme.edit'), edit_user_path(user)
 
 .actions-bar.wat-cf
   .actions

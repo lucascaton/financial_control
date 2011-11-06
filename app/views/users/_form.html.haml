@@ -18,6 +18,14 @@
     =f.label :password_confirmation, :class => :label
     =f.password_field :password_confirmation, :class => 'text_field'
     %span.description Repita a senha
+  .group
+    =f.label :admin, :class => :label
+    =f.check_box :admin
+    %span.description Marque esta opção se desejar atribuir permissões de administrador à este usuário
+  .group
+    =f.label :active, :class => :label
+    =f.check_box :active
+    %span.description Para desativar este usuário, desmarque esta opção. ATENÇÃO: este usuário não conseguirá fazer login
 
   .group.navform.wat-cf
     %button.button{:type => 'submit'}

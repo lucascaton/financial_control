@@ -7,6 +7,7 @@ pt-BR:
     new: Novo
     show: Detalhes
     delete: Deletar
+    deactivate: Desativar
     confirm: Você tem certeza?
     created_at: Criado em
     all: Todos

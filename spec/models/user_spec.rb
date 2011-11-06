@@ -17,6 +17,8 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  admin                  :boolean         default(FALSE)
+#  active                 :boolean         default(TRUE)
 #
 
 require 'spec_helper'
@@ -27,4 +29,10 @@ describe User do
   end
 
   it { should validate_presence_of :name }
+
+  [true, false].each { |value| it { should allow_value(value).for(:admin) }}
+  ['', nil].each { |wrong_value| it { should_not allow_value(wrong_value).for(:admin) }}
+
+  [true, false].each { |value| it { should allow_value(value).for(:active) }}
+  ['', nil].each { |wrong_value| it { should_not allow_value(wrong_value).for(:active) }}
 end
