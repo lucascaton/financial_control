@@ -48,6 +48,9 @@ FinancialControl::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
+  # Setup default url options for your this environment
+  config.action_mailer.default_url_options = { :host => '' }
+
   # Enable threaded mode
   # config.threadsafe!
 
