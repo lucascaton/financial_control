@@ -9,7 +9,6 @@ gem 'json'
 gem 'pg'
 gem 'rails', '3.1.1'
 gem 'settingslogic'
-gem 'simple_form'
 gem 'unicorn'
 gem 'will_paginate'
 
@@ -38,7 +37,6 @@ end
 group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
-  # gem 'fakeweb'
   gem 'forgery'
   gem 'shoulda-matchers'
 end

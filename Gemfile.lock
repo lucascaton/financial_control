@@ -155,9 +155,6 @@ GEM
     sexp_processor (3.0.7)
     shoulda-matchers (1.0.0)
     silent-postgres (0.1.1)
-    simple_form (1.5.2)
-      actionpack (~> 3.0)
-      activemodel (~> 3.0)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -208,7 +205,6 @@ DEPENDENCIES
   settingslogic
   shoulda-matchers
   silent-postgres
-  simple_form
   uglifier (>= 1.0.3)
   unicorn
   web-app-theme (~> 0.8.0)
