@@ -16,7 +16,9 @@ gem 'will_paginate'
 group :development do
   gem 'annotate', '2.4.1.beta1'
   # gem 'bullet'
+  gem 'hpricot'
   gem 'ruby-debug'
+  gem 'ruby_parser'
   gem 'silent-postgres'
   gem 'web-app-theme', '~> 0.8.0'
 end
