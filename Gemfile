@@ -14,7 +14,7 @@ gem 'unicorn'
 gem 'will_paginate'
 
 group :development do
-  gem 'annotate'
+  gem 'annotate', '2.4.1.beta1'
   # gem 'bullet'
   gem 'ruby-debug'
   gem 'silent-postgres'
