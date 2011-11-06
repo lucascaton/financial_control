@@ -1,16 +1,4 @@
 pt-BR:
-  web-app-theme:
-    save: Salvar
-    cancel: Cancelar
-    list: Lista
-    edit: Editar
-    new: Novo
-    show: Detalhes
-    delete: Deletar
-    confirm: Você tem certeza?
-    created_at: Criado em
-    all: Todos
-
   errors:
     template:
       header:
