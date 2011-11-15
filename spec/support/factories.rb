@@ -6,6 +6,8 @@ FactoryGirl.define do
     name { Forgery(:name).full_name }
     email { Forgery(:internet).email_address }
     password('secret')
+    admin('false')
+    active('true')
   end
 
   factory :group do
