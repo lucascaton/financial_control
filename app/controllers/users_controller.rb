@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :ensure_admin_user
+
   def index
     @users = User.order('name')
   end

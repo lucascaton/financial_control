@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_filter :ensure_admin_user
+
   def index
     @groups = Group.all
   end
