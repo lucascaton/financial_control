@@ -3,7 +3,7 @@ require 'integration_helper'
 feature 'Menu permissions' do
   context 'when I am a admin user' do
     background do
-      create_or_find_admin_user
+      create_or_find_a_admin_user
       authenticate_with_admin_email
     end
 
@@ -18,7 +18,7 @@ feature 'Menu permissions' do
 
   context 'when I am NOT a admin user' do
     background do
-      create_or_find_simple_user
+      create_or_find_a_simple_user
       authenticate_with_email
     end
 

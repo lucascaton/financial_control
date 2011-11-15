@@ -32,4 +32,4 @@ pt-BR:
         subject: 'Instruções de reinicialização de senha'
     sessions:
       user:
-        signed_in: 'Login realizado com sucesso'
+        signed_in: 'Login realizado com sucesso!'

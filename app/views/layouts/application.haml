@@ -14,7 +14,7 @@
         -if current_user
           #user-navigation
             %ul.wat-cf
-              %li="#{current_user.name} (#{link_to 'Sair', destroy_user_session_path})".html_safe
+              %li="<strong>#{current_user.name}</strong> (#{link_to 'Sair', destroy_user_session_path})".html_safe
         #wrapper.wat-cf
           #main
             .block
