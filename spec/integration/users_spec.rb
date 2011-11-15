@@ -34,4 +34,13 @@ feature 'Users management' do
     click_button 'Salvar'
     page.should have_content('Senha não bate com a confirmação')
   end
+
+  scenario 'Editing a user' do
+    user = FactoryGirl.create :user, :name => 'Mario'
+    visit "users/#{user.id}/edit"
+    fill_in 'Nome', :with => 'Luigi'
+    click_button 'Salvar'
+    page.should have_content('Usuário atualizado com sucesso')
+    page.should have_content('Luigi')
+  end
 end

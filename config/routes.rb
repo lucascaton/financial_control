@@ -7,5 +7,9 @@ FinancialControl::Application.routes.draw do
   end
 
   resources :users, :except => [:destroy]
-  resources :groups
+  resources :groups do
+    member do
+      post :add_user
+    end
+  end
 end

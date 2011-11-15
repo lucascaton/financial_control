@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find params[:id]
+    @users_to_add_to_group = User.active - @group.users
   end
 
   def new
@@ -37,5 +38,14 @@ class GroupsController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  def add_user
+    @group = Group.find params[:id]
+    user = User.find params[:add_user][:user_id]
+    @group.users << user
+
+    flash[:notice] = "Usuário \"#{user.name}\" adicionado com sucesso neste grupo."
+    redirect_to @group
   end
 end
