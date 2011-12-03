@@ -4,12 +4,14 @@ h1. About
 
 h1. Installation & Usage
 
-<pre><code>git clone git@github.com:lucascaton/financial_control.git
-cd financial_control
-bundle install
-bundle exec db:create
-bundle exec db:migrate
-rails server</code></pre>
+<pre><code>$ git clone git@github.com:lucascaton/financial_control.git
+$ cd financial_control
+$ bundle install
+$ cp config/database.yml.example config/database.yml
+(Edit your config/database.yml file)
+$ bundle exec rake db:create
+$ bundle exec rake db:migrate
+$ rails server</code></pre>
 
 h1. Contributing to Lucas Caton
 
