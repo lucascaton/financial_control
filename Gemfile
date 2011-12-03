@@ -36,6 +36,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'forgery'
   gem 'shoulda-matchers'
