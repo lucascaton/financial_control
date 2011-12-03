@@ -11,6 +11,14 @@ feature 'Groups management', %q{
     authenticate_with_admin_email
   end
 
+  scenario 'Listing all groups' do
+    FactoryGirl.create :group, :name => 'Umbrella Corporation'
+    FactoryGirl.create :group, :name => 'Tricell Farmaceutica'
+    visit groups_path
+    page.should have_content('Umbrella Corporation')
+    page.should have_content('Tricell Farmaceutica')
+  end
+
   scenario 'Creating a VALID new group' do
     visit new_group_path
     fill_in 'Nome', :with => 'Reynholm Industries'

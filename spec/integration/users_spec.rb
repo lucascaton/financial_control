@@ -11,6 +11,14 @@ feature 'Users management', %q{
     authenticate_with_admin_email
   end
 
+  scenario 'Listing all groups' do
+    FactoryGirl.create :user, :name => 'Crash Bandicoot'
+    FactoryGirl.create :user, :name => 'Coco Bandicoot'
+    visit users_path
+    page.should have_content('Crash Bandicoot')
+    page.should have_content('Coco Bandicoot')
+  end
+
   scenario 'Creating a VALID new user' do
     visit new_user_path
     fill_in 'Nome', :with => 'John Doe'
