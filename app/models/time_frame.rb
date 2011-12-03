@@ -16,8 +16,8 @@ class TimeFrame < ActiveRecord::Base
 
   belongs_to :group
 
-  def self.current
-    where(['? between start_on and end_on', Date.today]).first
+  def self.current_for_the_group(group)
+    where(['group_id = ? and ? between start_on and end_on', group.id, Date.today]).first
   end
 
   private

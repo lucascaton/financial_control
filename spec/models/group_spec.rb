@@ -17,6 +17,7 @@ describe Group do
 
   it { should have_many(:partnerships) }
   it { should have_many(:users).through(:partnerships) }
+  it { should have_many(:time_frames) }
 
   it { should validate_presence_of :name }
 

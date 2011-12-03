@@ -11,6 +11,7 @@
 class Group < ActiveRecord::Base
   has_many :partnerships
   has_many :users, :through => :partnerships
+  has_many :time_frames
 
   validates_presence_of :name
 
