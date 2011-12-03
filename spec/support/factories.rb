@@ -14,6 +14,12 @@ FactoryGirl.define do
     name { Forgery(:name).full_name }
   end
 
+  factory :time_frame do
+    association(:group)
+    start_on Date.today
+    end_on 1.month.from_now.to_date
+  end
+
   factory :partnership do
     association(:user)
     association(:group)

@@ -22,6 +22,8 @@ require 'spec/custom_matchers'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 Dir[Rails.root.join("spec/integration/macros/**/*.rb")].each {|f| require f}
 
+DatabaseCleaner.strategy = :truncation
+
 RSpec.configure do |config|
   config.mock_with :rspec
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -36,4 +38,9 @@ RSpec.configure do |config|
   config.before(:all) { scrub_instance_variables }
 
   config.include IntegrationHelpers, :type => :request if defined? IntegrationHelpers
+
+  config.before :each do
+    Capybara.reset_sessions!
+    DatabaseCleaner.clean
+  end
 end
