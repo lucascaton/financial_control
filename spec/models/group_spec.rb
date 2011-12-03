@@ -21,6 +21,8 @@ describe Group do
 
   it { should validate_presence_of :name }
 
+  it { FactoryGirl.create(:group); should validate_uniqueness_of :name }
+
   describe '#users_humanize' do
     it 'returns a empty string' do
       group = FactoryGirl.create(:group)
