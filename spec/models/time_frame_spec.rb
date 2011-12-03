@@ -26,4 +26,12 @@ describe TimeFrame do
   it 'is not valid if end_on is after start_on' do
     FactoryGirl.build(:time_frame, :start_on => Date.today, :end_on => Date.yesterday).should_not be_valid
   end
+
+  describe '#destroyable?' do
+    it 'returns true' do
+      # For now, every time_frame is destroyable
+      time_frame = FactoryGirl.create :time_frame
+      time_frame.destroyable?.should be_true
+    end
+  end
 end

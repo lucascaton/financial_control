@@ -16,6 +16,11 @@ class TimeFrame < ActiveRecord::Base
 
   belongs_to :group
 
+  def destroyable?
+    # For now, every time_frame is destroyable
+    true
+  end
+
   private
   def ensure_end_on_is_after_start_on
     return if end_on.nil? || start_on.nil?
