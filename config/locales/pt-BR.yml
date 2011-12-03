@@ -61,3 +61,7 @@ pt-BR:
       partnership:
         group_id: 'Grupo'
         user_id: 'Usuário'
+      time_frame:
+        grupo: 'Grupo'
+        start_on: 'Início'
+        end_on: 'Término'

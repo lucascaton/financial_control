@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find params[:id]
     @users_to_add_to_group = (User.active - @group.users).sort_by &:name
-    flash[:error] = 'Nenhum usuário cadastrado neste grupo.' if @group.users.empty?
+    flash.now[:error] = 'Nenhum usuário cadastrado neste grupo.' if @group.users.empty?
   end
 
   def new
@@ -57,5 +57,44 @@ class GroupsController < ApplicationController
 
     flash[:notice] = "Usuário \"#{user.name}\" removido com sucesso deste grupo."
     redirect_to @group
+  end
+
+  def time_frames
+    @group = Group.find params[:id]
+    @time_frames = @group.time_frames
+
+    if @time_frames.empty?
+      flash.now[:error] = 'Nenhum período cadastrado neste grupo.'
+    else
+      flash.now[:error] = 'Nenhum período ativo neste grupo.' unless @group.current_time_frame
+    end
+  end
+
+  def add_time_frame
+    @group = Group.find params[:id]
+    start_on = Date.civil(params[:add_time_frame]['period(1i)'].to_i, params[:add_time_frame]['period(2i)'].to_i, 1)
+    end_on = start_on.end_of_month
+
+    time_frame = TimeFrame.new :group_id => @group.id, :start_on => start_on, :end_on => end_on
+
+    if time_frame.save
+      flash[:notice] = "Período \"#{l(time_frame.start_on)} à #{l(time_frame.end_on)}\" adicionado com sucesso neste grupo."
+    else
+      flash[:error] = 'Não foi possível adicionar esse período.'
+    end
+    redirect_to time_frames_group_path(@group)
+  end
+
+  def remove_time_frame
+    @group = Group.find params[:id]
+    time_frame = TimeFrame.find params[:time_frame_id]
+
+    if time_frame.destroyable? && time_frame.destroy
+      flash[:notice] = 'Período removido com sucesso.'
+    else
+      flash[:error] = 'Não foi possível remover esse período.'
+    end
+
+    redirect_to time_frames_group_path(@group)
   end
 end

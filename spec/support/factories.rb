@@ -16,8 +16,8 @@ FactoryGirl.define do
 
   factory :time_frame do
     association(:group)
-    start_on Date.today
-    end_on 1.month.from_now.to_date
+    start_on Date.today.beginning_of_month
+    end_on Date.today.end_of_month
   end
 
   factory :partnership do

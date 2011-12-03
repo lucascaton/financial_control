@@ -1,0 +1,40 @@
+-content_for :block_title, "Grupo '#{@group.name}' - períodos cadastrados"
+-content_for :sidebar do
+  =render :partial => 'sidebar', :locals => { :links => { 'Editar grupo' => edit_group_path(@group),
+    'Incluir ou remover usuários deste grupo' => @group }}
+
+-if @time_frames.present?
+  %h3 Períodos:
+  %table.table
+    %tr
+      %th=t 'activerecord.attributes.time_frame.start_on'
+      %th=t 'activerecord.attributes.time_frame.end_on'
+      %th.last &nbsp;
+    -@time_frames.each do |time_frame|
+      %tr{:class => cycle('odd', 'even')}
+        %td=l time_frame.start_on
+        %td=l time_frame.end_on
+        -if time_frame.destroyable?
+          %td=link_to 'Remover período', remove_time_frame_from_group_path(@group, :time_frame_id => time_frame.id),
+            :id => "remove_time_frame_#{time_frame.id}", :method => :delete, :confirm => 'Você tem certeza?'
+        -else
+          %td &nbsp;
+
+.actions-bar.wat-cf
+  .actions
+
+=form_for :add_time_frame, :url => add_time_frame_to_group_path(@group), :html => { :class => :form } do |f|
+  .group
+    =f.label :period, 'Adicionar período', :class => :label
+    =f.date_select :period, :discard_day => true, :start_year => (Date.today.year - 1),
+      :default => @group.time_frames.present? ? @group.time_frames.last.start_on.next_month : nil
+
+  .group.navform.wat-cf
+    %button.button{:type => 'submit'}
+      =image_tag 'web-app-theme/icons/tick.png', :alt => t('web-app-theme.save')
+      Adicionar
+    %span.text_button_padding=t 'web-app-theme.or'
+    =link_to t('web-app-theme.back'), groups_path, :class => 'text_button_padding link_button'
+
+.actions-bar.wat-cf
+  .actions

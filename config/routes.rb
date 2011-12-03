@@ -12,6 +12,9 @@ FinancialControl::Application.routes.draw do
     member do
       post :add_user, :as => :add_user_to
       delete :remove_user, :as => :remove_user_from
+      get :time_frames
+      post :add_time_frame, :as => :add_time_frame_to
+      delete :remove_time_frame, :as => :remove_time_frame_from
     end
   end
 end

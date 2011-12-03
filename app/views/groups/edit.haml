@@ -1,5 +1,6 @@
 -content_for :block_title, "Editar grupo '#{@group.name}'"
 -content_for :sidebar do
-  =render :partial => 'sidebar', :locals => { :links => { 'Incluir ou remover usuários deste grupo' => @group }}
+  =render :partial => 'sidebar', :locals => { :links => { 'Incluir ou remover usuários deste grupo' => @group,
+    'Períodos cadastrados' => time_frames_group_path }}
 
 =render :partial => 'form'
