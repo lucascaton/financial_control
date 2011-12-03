@@ -1,6 +1,11 @@
 require 'integration_helper'
 
-feature 'Users sessions' do
+feature 'Users sessions', %q{
+  In order to use the application and close my session
+  As an user
+  I want to sign in and sign out
+} do
+
   scenario 'Signing in with a simple user' do
     create_or_find_a_simple_user
     authenticate_with_email

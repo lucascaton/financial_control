@@ -1,6 +1,11 @@
 require 'integration_helper'
 
-feature 'Users management' do
+feature 'Users management', %q{
+  In order to organize users
+  As an admin user
+  I want to manage users
+} do
+
   background do
     create_or_find_a_admin_user
     authenticate_with_admin_email
