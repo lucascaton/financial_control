@@ -16,10 +16,6 @@ class TimeFrame < ActiveRecord::Base
 
   belongs_to :group
 
-  def self.current_for_the_group(group)
-    where(['group_id = ? and ? between start_on and end_on', group.id, Date.today]).first
-  end
-
   private
   def ensure_end_on_is_after_start_on
     return if end_on.nil? || start_on.nil?

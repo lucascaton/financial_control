@@ -18,4 +18,8 @@ class Group < ActiveRecord::Base
   def users_humanize
     users.map(&:name).join(', ')
   end
+
+  def current_time_frame
+    TimeFrame.where(['group_id = ? and ? between start_on and end_on', self.id, Date.today]).first
+  end
 end

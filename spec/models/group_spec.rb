@@ -37,4 +37,24 @@ describe Group do
       group.users_humanize.should == 'Neo, Morpheus'
     end
   end
+
+  describe '#current_time_frame' do
+    before :each do
+      @group = FactoryGirl.create :group
+    end
+
+    it 'returns the current time frame' do
+      time_frame = FactoryGirl.create :time_frame, :start_on => Date.today, :end_on => 1.month.from_now.to_date, :group => @group
+      @group.current_time_frame == time_frame
+    end
+
+    it 'returns nil when the last time frame already over' do
+      time_frame = FactoryGirl.create :time_frame, :start_on => 2.month.ago.to_date, :end_on => 1.month.ago.to_date, :group => @group
+      @group.current_time_frame.should be_nil
+    end
+
+    it 'returns nil when there is no time frames' do
+      @group.current_time_frame.should be_nil
+    end
+  end
 end
