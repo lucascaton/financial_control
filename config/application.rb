@@ -52,8 +52,10 @@ module FinancialControl
     config.assets.version = '1.0'
 
     config.generators do |g|
-      g.test_framework :rspec, :fixture => false
-      g.fixture_replacement :factory_girl
+      g.orm                 :active_record
+      g.template_engine     :haml
+      g.test_framework      :rspec, :fixture => false
+      g.fixture_replacement :factory_girl, :dir => 'spec/support/factories'
     end
   end
 end
