@@ -1,5 +1,8 @@
 require 'spec_helper'
 
+Capybara.javascript_driver = :selenium
+# Capybara.javascript_driver = :webkit
+
 Capybara.default_selector = :css
 Capybara.ignore_hidden_elements = true
 Capybara.default_wait_time = 10

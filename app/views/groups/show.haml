@@ -1,38 +1,45 @@
 -content_for :block_title, "Grupo '#{@group.name}'"
 -content_for :sidebar, render(:partial => 'sidebar')
 
-%h3 Usuários:
-%table.table
-  %tr
-    %th.first ID
-    %th=t 'activerecord.attributes.user.name'
-    %th=t 'activerecord.attributes.user.email'
-    %th=t 'web-app-theme.created_at'
-    %th=t 'activerecord.attributes.user.admin'
-    %th=t 'activerecord.attributes.user.active'
-  -@group.users.each do |user|
-    %tr{:class => cycle('odd', 'even')}
-      %td=user.id
-      %td{ :class => ('strike' unless user.active?) }=user.name
-      %td{ :class => ('strike' unless user.active?) }=user.email
-      %td=l user.created_at, :format => :short
-      %td=t user.admin.to_s
-      %td=t user.active.to_s
+-if @group.users.present?
+  %h3 Usuários:
+  %table.table
+    %tr
+      %th.first ID
+      %th=t 'activerecord.attributes.user.name'
+      %th=t 'activerecord.attributes.user.email'
+      %th=t 'web-app-theme.created_at'
+      %th=t 'activerecord.attributes.user.admin'
+      %th=t 'activerecord.attributes.user.active'
+      %th.last &nbsp;
+    -@group.users.each do |user|
+      %tr{:class => cycle('odd', 'even')}
+        %td=user.id
+        %td{ :class => ('strike' unless user.active?) }=user.name
+        %td{ :class => ('strike' unless user.active?) }=user.email
+        %td=l user.created_at, :format => :short
+        %td=t user.admin.to_s
+        %td=t user.active.to_s
+        %td=link_to 'Remover desse grupo', remove_user_from_group_path(@group, :user_id => user.id),
+          :id => "remove_user_#{user.id}", :method => :delete, :confirm => 'Você tem certeza?'
 
 .actions-bar.wat-cf
   .actions
 
-=form_for :add_user, :url => add_user_group_path, :html => { :class => :form } do |f|
-  .group
-    =f.label :user_id, 'Adicionar usuário:', :class => :label
-    =f.select :user_id, select_for_users(@users_to_add_to_group), :class => 'text_field'
+-if @users_to_add_to_group.present?
+  =form_for :add_user, :url => add_user_to_group_path(@group), :html => { :class => :form } do |f|
+    .group
+      =f.label :user_id, 'Adicionar usuário:', :class => :label
+      =f.select :user_id, select_for_users(@users_to_add_to_group), :class => 'text_field'
 
-  .group.navform.wat-cf
-    %button.button{:type => 'submit'}
-      =image_tag 'web-app-theme/icons/tick.png', :alt => t('web-app-theme.save')
-      Incluir neste grupo
-    %span.text_button_padding=t 'web-app-theme.or'
-    =link_to t('web-app-theme.back'), groups_path, :class => 'text_button_padding link_button'
+    .group.navform.wat-cf
+      %button.button{:type => 'submit'}
+        =image_tag 'web-app-theme/icons/tick.png', :alt => t('web-app-theme.save')
+        Incluir neste grupo
+      %span.text_button_padding=t 'web-app-theme.or'
+      =link_to t('web-app-theme.back'), groups_path, :class => 'text_button_padding link_button'
+-else
+  =link_to t('web-app-theme.back'), groups_path, :class => 'text_button_padding link_button'
 
 .actions-bar.wat-cf
   .actions
