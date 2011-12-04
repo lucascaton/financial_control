@@ -4,7 +4,7 @@ require 'forgery'
 FactoryGirl.define do
   factory :entry do
     association(:time_frame)
-    kind 'kind'
+    kind { EntryKind.list.sample }
     title 'New entry'
     value { (1..400).to_a.sample.to_f }
     auto_debit false

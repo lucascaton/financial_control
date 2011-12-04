@@ -35,6 +35,9 @@ describe Entry do
   it { should_not allow_value(nil).for(:done) }
   [true, false].each { |done| it { should allow_value(done).for(:done) }}
 
+  [nil, 'other'].each { |kind| it { should_not allow_value(kind).for(:kind) }}
+  EntryKind.list.each { |kind| it { should allow_value(kind).for(:kind) }}
+
   it { should belong_to :time_frame }
   # it { should belong_to :credit_card }
 end
