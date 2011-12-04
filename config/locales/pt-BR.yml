@@ -47,14 +47,6 @@ pt-BR:
         many: 'Usuários'
 
     attributes:
-      user:
-        name: 'Nome'
-        groups: 'Grupos'
-        email: 'E-mail'
-        password: 'Senha'
-        password_confirmation: 'Confirmação de senha'
-        admin: 'Administrador?'
-        active: 'Ativo?'
       group:
         name: 'Nome'
         users: 'Usuários'
@@ -65,3 +57,11 @@ pt-BR:
         grupo: 'Grupo'
         start_on: 'Início'
         end_on: 'Término'
+      user:
+        name: 'Nome'
+        groups: 'Grupos'
+        email: 'E-mail'
+        password: 'Senha'
+        password_confirmation: 'Confirmação de senha'
+        admin: 'Administrador?'
+        active: 'Ativo?'
