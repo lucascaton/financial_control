@@ -58,7 +58,7 @@ pt-BR:
       group:
         name: 'Nome'
         users: 'Usuários'
-      partnership:
+      membership:
         group_id: 'Grupo'
         user_id: 'Usuário'
       time_frame:

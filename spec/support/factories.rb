@@ -20,7 +20,7 @@ FactoryGirl.define do
     end_on Date.today.end_of_month
   end
 
-  factory :partnership do
+  factory :membership do
     association(:user)
     association(:group)
   end

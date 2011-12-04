@@ -15,8 +15,8 @@ describe Group do
     FactoryGirl.build(:group).should be_valid
   end
 
-  it { should have_many(:partnerships) }
-  it { should have_many(:users).through(:partnerships) }
+  it { should have_many(:memberships) }
+  it { should have_many(:users).through(:memberships) }
   it { should have_many(:time_frames) }
 
   it { should validate_presence_of :name }
@@ -33,8 +33,8 @@ describe Group do
       group = FactoryGirl.create :group
       user_1 = FactoryGirl.create :user, :name => 'Neo'
       user_2 = FactoryGirl.create :user, :name => 'Morpheus'
-      FactoryGirl.create :partnership, :group => group, :user => user_1
-      FactoryGirl.create :partnership, :group => group, :user => user_2
+      FactoryGirl.create :membership, :group => group, :user => user_1
+      FactoryGirl.create :membership, :group => group, :user => user_2
 
       group.users_humanize.should == 'Neo, Morpheus'
     end

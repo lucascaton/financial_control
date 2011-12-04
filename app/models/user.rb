@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :admin, :active
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  has_many :partnerships
-  has_many :groups, :through => :partnerships
+  has_many :memberships
+  has_many :groups, :through => :memberships
 
   validates_presence_of :name
 

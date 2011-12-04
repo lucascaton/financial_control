@@ -27,8 +27,8 @@ describe User do
     FactoryGirl.build(:user).should be_valid
   end
 
-  it { should have_many(:partnerships) }
-  it { should have_many(:groups).through(:partnerships) }
+  it { should have_many(:memberships) }
+  it { should have_many(:groups).through(:memberships) }
 
   it { should validate_presence_of :name }
 

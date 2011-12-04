@@ -9,8 +9,8 @@
 #
 
 class Group < ActiveRecord::Base
-  has_many :partnerships
-  has_many :users, :through => :partnerships
+  has_many :memberships
+  has_many :users, :through => :memberships
   has_many :time_frames, :order => :start_on
 
   validates_presence_of :name

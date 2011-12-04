@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: partnerships
+# Table name: memberships
 #
 #  id         :integer         not null, primary key
 #  group_id   :integer
@@ -9,7 +9,7 @@
 #  updated_at :datetime
 #
 
-class Partnership < ActiveRecord::Base
+class Membership < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
 
