@@ -9,11 +9,13 @@
     %tr
       %th=t 'activerecord.attributes.time_frame.start_on'
       %th=t 'activerecord.attributes.time_frame.end_on'
+      %th Entradas
       %th.last &nbsp;
     -@time_frames.each do |time_frame|
       %tr{:class => cycle('odd', 'even')}
         %td=l time_frame.start_on
         %td=l time_frame.end_on
+        %td=link_to "<strong>#{pluralize(time_frame.entries.count, 'entrada')}</strong>".html_safe, time_frame
         -if time_frame.destroyable?
           %td=link_to 'Remover período', remove_time_frame_from_group_path(@group, :time_frame_id => time_frame.id),
             :id => "remove_time_frame_#{time_frame.id}", :method => :delete, :confirm => 'Você tem certeza?'

@@ -59,4 +59,25 @@ describe Group do
       @group.current_time_frame.should be_nil
     end
   end
+
+  describe '#last_5_time_frames' do
+    it 'returns the last 5 time frames' do
+      group = FactoryGirl.create :group
+
+      time_frame_1 = FactoryGirl.create :time_frame, :group => group,
+        :start_on => 1.months.ago.to_date.beginning_of_month, :end_on => 1.months.ago.to_date.end_of_month
+      time_frame_2 = FactoryGirl.create :time_frame, :group => group,
+        :start_on => 2.months.ago.to_date.beginning_of_month, :end_on => 2.months.ago.to_date.end_of_month
+      time_frame_3 = FactoryGirl.create :time_frame, :group => group,
+        :start_on => 3.months.ago.to_date.beginning_of_month, :end_on => 3.months.ago.to_date.end_of_month
+      time_frame_4 = FactoryGirl.create :time_frame, :group => group,
+        :start_on => 4.months.ago.to_date.beginning_of_month, :end_on => 4.months.ago.to_date.end_of_month
+      time_frame_5 = FactoryGirl.create :time_frame, :group => group,
+        :start_on => 5.months.ago.to_date.beginning_of_month, :end_on => 5.months.ago.to_date.end_of_month
+      time_frame_6 = FactoryGirl.create :time_frame, :group => group,
+        :start_on => 6.months.ago.to_date.beginning_of_month, :end_on => 6.months.ago.to_date.end_of_month
+
+      group.last_5_time_frames =~ [time_frame_1, time_frame_2, time_frame_3, time_frame_4, time_frame_5]
+    end
+  end
 end

@@ -5,14 +5,15 @@
   %ul.list
     -@groups.each do |group|
       %li
-        .left=link_to image_tag('icons/money.png'), group
+        .left=image_tag 'icons/money.png'
         .item
           %h3=link_to group.name, group
           -if group.time_frames.present?
             %ul
-              -group.time_frames.each do |time_frame|
-                %li=link_to "#{time_frame.period}#{group.current_time_frame == time_frame ? ' (atual)' : ''}",
-                  time_frames_group_path(group)
+              -group.last_5_time_frames.each do |time_frame|
+                %li=link_to "#{time_frame.period}#{group.current_time_frame == time_frame ? ' (atual)' : ''}", time_frame
           -else
             %p
               %em Este grupo não possúi nenhum período.
+
+          =link_to '→ Ver todos os períodos cadastrados', time_frames_group_path(group)

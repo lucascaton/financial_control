@@ -17,4 +17,6 @@ FinancialControl::Application.routes.draw do
       delete :remove_time_frame, :as => :remove_time_frame_from
     end
   end
+
+  resources :time_frames, :only => [:show]
 end

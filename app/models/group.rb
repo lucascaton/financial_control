@@ -24,4 +24,8 @@ class Group < ActiveRecord::Base
   def current_time_frame
     TimeFrame.where(['group_id = ? and ? between start_on and end_on', self.id, Date.today]).first
   end
+
+  def last_5_time_frames
+    time_frames.order('start_on').limit(5)
+  end
 end
