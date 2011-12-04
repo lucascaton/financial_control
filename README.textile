@@ -2,6 +2,12 @@ h1. About
 
 "Financial Control" is a Rails application to manage your finances.
 
+h1. Screenshots
+
+!https://github.com/lucascaton/financial_control/raw/master/app/assets/images/screencasts/1.png!
+!https://github.com/lucascaton/financial_control/raw/master/app/assets/images/screencasts/2.png!
+!https://github.com/lucascaton/financial_control/raw/master/app/assets/images/screencasts/3.png!
+
 h1. Installation & Usage
 
 <pre><code>$ git clone git@github.com:lucascaton/financial_control.git
