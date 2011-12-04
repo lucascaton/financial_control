@@ -27,6 +27,19 @@ describe TimeFrame do
     FactoryGirl.build(:time_frame, :start_on => Date.today, :end_on => Date.yesterday).should_not be_valid
   end
 
+  it 'is not valid if there is time frames with same period' do
+    group = FactoryGirl.create :group
+    FactoryGirl.create(:time_frame, :group => group, :start_on => 15.days.ago.to_date, :end_on => 15.days.from_now.to_date)
+    new_time_frame = FactoryGirl.build(:time_frame, :group => group, :start_on => Date.today, :end_on => 1.month.from_now.to_date)
+    new_time_frame.should_not be_valid
+  end
+
+  it 'is valid if there is time frames with same period, but different groups ' do
+    a = FactoryGirl.create(:time_frame, :start_on => 15.days.ago.to_date, :end_on => 15.days.from_now.to_date)
+    new_time_frame = FactoryGirl.build(:time_frame, :start_on => Date.today, :end_on => 1.month.from_now.to_date)
+    new_time_frame.should be_valid
+  end
+
   describe '#destroyable?' do
     it 'returns true' do
       # For now, every time_frame is destroyable

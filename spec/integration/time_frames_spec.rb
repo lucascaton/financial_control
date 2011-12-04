@@ -39,7 +39,6 @@ feature 'Time frame management', %q{
   end
 
   scenario 'Trying to add a invalid time frame to a group' do
-    pending
     time_frame = FactoryGirl.create :time_frame, :group => @group,
       :start_on => Date.parse('01-12-2011'), :end_on => Date.parse('31-12-2011')
     visit "/groups/#{@group.id}/time_frames"
