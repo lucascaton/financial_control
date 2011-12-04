@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111204124848) do
+ActiveRecord::Schema.define(:version => 20111204134851) do
+
+  create_table "entries", :force => true do |t|
+    t.integer  "time_frame_id",                     :null => false
+    t.string   "kind",                              :null => false
+    t.string   "title",                             :null => false
+    t.text     "description"
+    t.float    "value",          :default => 0.0,   :null => false
+    t.date     "bill_on"
+    t.boolean  "auto_debit",     :default => false, :null => false
+    t.integer  "credit_card_id"
+    t.boolean  "done",           :default => false, :null => false
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "groups", :force => true do |t|
     t.string   "name"

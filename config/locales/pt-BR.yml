@@ -47,6 +47,17 @@ pt-BR:
         many: 'Usuários'
 
     attributes:
+      entry:
+        time_frame_id: 'Período'
+        kind: 'Tipo'
+        title: 'Título'
+        description: 'Descrição'
+        value: 'Valor'
+        bill_on: 'Data de cobrança'
+        auto_debit: 'Débito automático?'
+        credit_card_id: 'Cartão de crédito'
+        done: 'Pago?'
+        deleted_at: 'Excluído em'
       group:
         name: 'Nome'
         users: 'Usuários'

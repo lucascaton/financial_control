@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: entries
+#
+#  id             :integer         not null, primary key
+#  time_frame_id  :integer         not null
+#  kind           :string(255)     not null
+#  title          :string(255)     not null
+#  description    :text
+#  value          :float           default(0.0), not null
+#  bill_on        :date
+#  auto_debit     :boolean         default(FALSE), not null
+#  credit_card_id :integer
+#  done           :boolean         default(FALSE), not null
+#  deleted_at     :datetime
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
+class Entry < ActiveRecord::Base
+  validates_presence_of :time_frame_id, :kind, :title, :value
+  validates_inclusion_of :auto_debit, :in => [true, false]
+  validates_inclusion_of :done, :in => [true, false]
+
+  belongs_to :time_frame
+  # belongs_to :credit_card
+end
