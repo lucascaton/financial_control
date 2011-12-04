@@ -23,7 +23,7 @@ class Entry < ActiveRecord::Base
   validates_inclusion_of :done, :in => [true, false]
   validates_inclusion_of :kind, :in => EntryKind.list
 
-  belongs_to :time_frame
+  belongs_to :time_frame, :dependent => :destroy
   # belongs_to :credit_card
 
   has_enumeration_for :kind, :with => EntryKind, :create_helpers => true

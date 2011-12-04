@@ -78,7 +78,7 @@ class GroupsController < ApplicationController
     time_frame = TimeFrame.new :group_id => @group.id, :start_on => start_on, :end_on => end_on
 
     if time_frame.save
-      flash[:notice] = "Período \"#{l(time_frame.start_on)} à #{l(time_frame.end_on)}\" adicionado com sucesso neste grupo."
+      flash[:notice] = "Período \"#{time_frame.period}\" adicionado com sucesso neste grupo."
     else
       flash[:error] = 'Não foi possível adicionar esse período.'
     end

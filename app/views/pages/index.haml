@@ -1,4 +1,18 @@
 -content_for :block_title, 'Bem-vindo!'
 -content_for :sidebar, render(:partial => 'sidebar')
 
-=':: Financial Control ::'
+.inner
+  %ul.list
+    -@groups.each do |group|
+      %li
+        .left=link_to image_tag('icons/money.png'), group
+        .item
+          %h3=link_to group.name, group
+          -if group.time_frames.present?
+            %ul
+              -group.time_frames.each do |time_frame|
+                %li=link_to "#{time_frame.period}#{group.current_time_frame == time_frame ? ' (atual)' : ''}",
+                  time_frames_group_path(group)
+          -else
+            %p
+              %em Este grupo não possúi nenhum período.

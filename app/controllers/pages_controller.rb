@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
-  def index; end
+  def index
+    @groups = Group.all
+  end
+
   def licence; end
 end

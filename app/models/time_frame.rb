@@ -17,9 +17,15 @@ class TimeFrame < ActiveRecord::Base
 
   belongs_to :group
 
+  has_many :entries
+
   def destroyable?
     # For now, every time_frame is destroyable
     true
+  end
+
+  def period
+    "#{I18n.l start_on} à #{I18n.l end_on}"
   end
 
   private

@@ -9,3 +9,26 @@
 .strike {
   text-decoration: line-through;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+a:link, a:visited, a:active {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.list li .item ul {
+  list-style-position: inside;
+  list-style-type: square;
+  margin-bottom: 20px;
+}
+
+.list li .item ul li {
+  border: 0px;
+  margin-top: 5px;
+}
