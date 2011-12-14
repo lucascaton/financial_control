@@ -7,6 +7,7 @@ h1. Screenshots
 !https://github.com/lucascaton/financial_control/raw/master/app/assets/images/screenshots/1.png!
 !https://github.com/lucascaton/financial_control/raw/master/app/assets/images/screenshots/2.png!
 !https://github.com/lucascaton/financial_control/raw/master/app/assets/images/screenshots/3.png!
+!https://github.com/lucascaton/financial_control/raw/master/app/assets/images/screenshots/4.png!
 
 h1. Installation & Usage
 
