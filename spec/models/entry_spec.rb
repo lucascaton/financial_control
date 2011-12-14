@@ -40,4 +40,36 @@ describe Entry do
 
   it { should belong_to :time_frame }
   # it { should belong_to :credit_card }
+
+  describe '#status' do
+    it 'returns done' do
+      entry = FactoryGirl.create(:entry, :bill_on => 1.day.ago.to_date, :done => true)
+      entry.status.should == EntryStatus::DONE
+    end
+
+    it 'returns done if it have no bill_on' do
+      entry = FactoryGirl.create(:entry, :bill_on => nil, :done => true)
+      entry.status.should == EntryStatus::DONE
+    end
+
+    it 'returns warning' do
+      entry = FactoryGirl.create(:entry, :bill_on => 5.day.from_now.to_date, :done => false)
+      entry.status.should == EntryStatus::WARNING
+    end
+
+    it 'returns late' do
+      entry = FactoryGirl.create(:entry, :bill_on => 1.day.ago.to_date, :done => false)
+      entry.status.should == EntryStatus::LATE
+    end
+
+    it 'returns pending' do
+      entry = FactoryGirl.create(:entry, :bill_on => 8.day.from_now.to_date, :done => false)
+      entry.status.should == EntryStatus::PENDING
+    end
+
+    it 'returns pending if it have no bill_on' do
+      entry = FactoryGirl.create(:entry, :bill_on => nil, :done => false)
+      entry.status.should == EntryStatus::PENDING
+    end
+  end
 end

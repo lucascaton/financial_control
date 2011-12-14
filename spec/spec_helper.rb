@@ -16,6 +16,7 @@ require 'capybara/rspec'
 require 'capybara/rails'
 # require 'fakeweb'
 require 'spec/custom_matchers'
+require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.

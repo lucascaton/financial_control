@@ -1,0 +1,44 @@
+.strike
+  text-decoration: line-through
+
+.bold
+  font-weight: bold
+
+.center
+  margin: auto
+  text-align: center
+
+.left
+  float: left
+
+.right
+  float: right
+
+a
+  &:link, &:visited, &:active
+    text-decoration: none
+  &:hover
+    text-decoration: underline
+
+.list li .item ul
+  list-style-position: inside
+  list-style-type: square
+  margin-bottom: 20px
+  li
+    border: 0px
+    margin-top: 5px
+
+table.table#entries
+  tr
+    th
+      border: 1px solid #AAA
+      text-align: center
+    td
+      border: 1px solid #DDD
+  tr:hover
+    background-color: #EEF
+    td
+      cursor: pointer
+  .short
+    width: 60px
+    text-align: center

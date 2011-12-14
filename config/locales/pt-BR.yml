@@ -58,6 +58,7 @@ pt-BR:
         credit_card_id: 'Cartão de crédito'
         done: 'Pago?'
         deleted_at: 'Excluído em'
+        status: 'Status'
       group:
         name: 'Nome'
         users: 'Usuários'

@@ -17,7 +17,7 @@ class TimeFrame < ActiveRecord::Base
 
   belongs_to :group
 
-  has_many :entries
+  has_many :entries, :dependent => :destroy
 
   def destroyable?
     # For now, every time_frame is destroyable

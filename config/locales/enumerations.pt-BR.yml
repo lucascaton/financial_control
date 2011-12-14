@@ -1,5 +1,7 @@
 pt-BR:
   enumerations:
-    # language:
-    #   portuguese: 'Português Brasileiro'
-    #   english: 'Inglês'
+    entry_status:
+      done: 'Pago'
+      late: 'Atrasado'
+      warning: 'Vencendo'
+      pending: 'Pendente'

@@ -1,1 +1,36 @@
 -content_for :block_title, "Grupo \"#{@time_frame.group.name}\" - Período de #{@time_frame.period}"
+-content_for :sidebar do
+  =render :partial => 'sidebar', :locals => { :links => {} }
+-content_for :header do
+  =javascript_include_tag 'app/time_frames/show'
+
+-if @entries.present?
+  %table.table#entries
+    %tr
+      %th.short=t 'activerecord.attributes.entry.bill_on'
+      %th=t 'activerecord.attributes.entry.title'
+      %th.short -
+      %th.short +
+      %th.short=t 'activerecord.attributes.entry.status'
+      %th.last &nbsp;
+    -@entries.each do |entry|
+      %tr{:class => cycle('odd', 'even'), :id => "entry_#{entry.id}"}
+        %td.short=entry.bill_on ? l(entry.bill_on) : '-'
+        %td=entry.title
+        %td.short=entry.debit? ? number_to_currency(entry.value) : ''
+        %td.short=entry.credit? ? number_to_currency(entry.value) : ''
+        %td.short
+          =image_tag("icons/#{entry.status}.png")
+          %br
+          =EntryStatus.t entry.status
+        %td=entry.description
+
+-# -if @entries_histories.present? || true
+-#   %table.table#hitory
+-#     %tr
+-#       %th.last &nbsp;
+-#     %tr{:class => cycle('odd', 'even')}
+-#       %td &nbsp;
+
+-# .actions-bar.wat-cf
+-#   .actions
