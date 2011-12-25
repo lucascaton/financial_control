@@ -17,3 +17,11 @@ function configure_external_links(){
     return false;
   });
 }
+
+function show_loading(active){
+  if(active){
+    $('#loading').fadeIn(200);
+  }else{
+    $('#loading').fadeOut(100);
+  }
+}

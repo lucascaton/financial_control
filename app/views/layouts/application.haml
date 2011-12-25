@@ -9,6 +9,9 @@
   %body
     #container
       #header
+        #loading
+          =image_tag 'icons/ajax-loader.gif'
+          Loading...
         %h1=link_to 'Financial Control', root_path
         #main-navigation
           =render :partial => 'layouts/menu'

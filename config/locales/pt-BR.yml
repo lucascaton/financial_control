@@ -57,6 +57,8 @@ pt-BR:
         auto_debit: 'Débito automático?'
         credit_card_id: 'Cartão de crédito'
         done: 'Pago?'
+        created_at: 'Criação'
+        updated_at: 'Última atualização'
         deleted_at: 'Excluído em'
         status: 'Status'
       group:

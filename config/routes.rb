@@ -2,6 +2,8 @@ FinancialControl::Application.routes.draw do
   root :to => 'pages#index'
   match 'licence' => 'pages#licence'
 
+  resources :entries, :only => [:show]
+
   resources :groups, :except => [:destroy] do
     member do
       post :add_user, :as => :add_user_to

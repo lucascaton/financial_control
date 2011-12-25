@@ -12,7 +12,7 @@
       %th.short -
       %th.short +
       %th.short=t 'activerecord.attributes.entry.status'
-      %th.last &nbsp;
+      %th.last=t 'activerecord.attributes.entry.description'
     -@entries.each do |entry|
       %tr{:class => cycle('odd', 'even'), :id => "entry_#{entry.id}"}
         %td.short=entry.bill_on ? l(entry.bill_on) : '-'
@@ -23,7 +23,7 @@
           =image_tag("icons/#{entry.status}.png")
           %br
           =EntryStatus.t entry.status
-        %td=entry.description
+        %td=truncate entry.description, :length => 60
 
 -# -if @entries_histories.present? || true
 -#   %table.table#hitory
