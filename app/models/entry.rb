@@ -28,6 +28,8 @@ class Entry < ActiveRecord::Base
 
   has_enumeration_for :kind, :with => EntryKind, :create_helpers => true
 
+  scope :active, where(:deleted_at => nil)
+
   def status
     if done?
       EntryStatus::DONE
@@ -38,5 +40,9 @@ class Entry < ActiveRecord::Base
     else
       EntryStatus::PENDING
     end
+  end
+
+  def destroy
+    update_attribute :deleted_at, Time.now
   end
 end
