@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_tree ./vendor
 
 $(function(){
   configure_external_links();
