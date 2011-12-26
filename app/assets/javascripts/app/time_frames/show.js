@@ -3,7 +3,7 @@ $(function(){
 });
 
 function show_details(){
-  $('table.table#entries tr').click(function(){
+  $('table.table#entries tbody tr').click(function(){
     show_loading(true);
     entry_id = $(this).attr('id').replace(/entry_/, '');
     $.get('/entries/' + entry_id, {}, function(data){
