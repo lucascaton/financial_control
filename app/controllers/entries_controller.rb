@@ -7,10 +7,21 @@ class EntriesController < ApplicationController
   def quick_update
     entry = Entry.find params[:id]
     attribute = params[:attribute].to_sym
-    attribute_humanize = "#{attribute}_humanize".to_sym
+    update_value = (attribute == :value) ? params[:update_value].gsub(/,/, '.') : params[:update_value]
 
-    successful = entry.update_attributes attribute => params[:update_value]
-    value = entry.respond_to?(attribute_humanize) ? entry.send(attribute_humanize) : entry.send(attribute)
-    render :json => value
+    if entry.update_attributes attribute => update_value
+      data = case attribute
+        when :kind
+          entry.kind_humanize
+        when :value
+          entry.value.to_currency Currency::BRL
+        else
+          entry.send(attribute)
+        end
+
+      render :json => data
+    else
+      render :json => nil
+    end
   end
 end

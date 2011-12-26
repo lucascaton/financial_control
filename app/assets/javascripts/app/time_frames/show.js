@@ -15,19 +15,22 @@ function show_details(){
 }
 
 default_edit_in_place_options = {
-  bg_over:         '#BBB',
-  saving_text:     'Salvando...',
-  select_text:     'Selecione uma opção',
-  success:         update_entries,
-  error:           show_error_message,
-  show_buttons:    true,
-  save_button:     ' <button class="inplace_save">Salvar</button>',
-  cancel_button:   ''
+  bg_over:                 '#BBB',
+  saving_text:             'Salvando...',
+  select_text:             'Selecione uma opção',
+  textarea_rows:           3,
+  success:                 update_entries,
+  error:                   show_error_message,
+  show_buttons:            true,
+  save_button:             ' <button class="inplace_save">Salvar</button>',
+  cancel_button:           '',
+  save_if_nothing_changed: true
 };
 
 function setup_edit_in_place_fields(){
   var entry_kind = $('#entry_details .field .value#entry_kind');
   var entry_description = $('#entry_details .field .value#entry_description');
+  var entry_value = $('#entry_details .field .value#entry_value');
   var entry_id = $('#entry_details #entry_id').html();
 
   entry_kind.editInPlace($.extend(default_edit_in_place_options,{
@@ -39,9 +42,17 @@ function setup_edit_in_place_fields(){
 
   entry_description.editInPlace($.extend(default_edit_in_place_options,{
     field_type:      'textarea',
-    textarea_rows:   4,
     url:             '/entries/' + entry_id + '/quick_update',
     params:          '_method=put&attribute=description'
+  }));
+
+  entry_value.editInPlace($.extend(default_edit_in_place_options,{
+    field_type:      'text',
+    url:             '/entries/' + entry_id + '/quick_update',
+    params:          '_method=put&attribute=value',
+    preinit:          function(currentDomNode){
+      currentDomNode.html(currentDomNode.html().replace(/R\$ /, '').replace(/,/, '.'));
+    }
   }));
 }
 
