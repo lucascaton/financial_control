@@ -27,6 +27,7 @@ default_edit_in_place_options = {
 
 function setup_edit_in_place_fields(){
   var entry_kind = $('#entry_details .field .value#entry_kind');
+  var entry_description = $('#entry_details .field .value#entry_description');
   var entry_id = $('#entry_details #entry_id').html();
 
   entry_kind.editInPlace($.extend(default_edit_in_place_options,{
@@ -34,6 +35,13 @@ function setup_edit_in_place_fields(){
     select_options:  [['Débito (-)', 'debit'], ['Crédito (+)', 'credit']],
     url:             '/entries/' + entry_id + '/quick_update',
     params:          '_method=put&attribute=kind'
+  }));
+
+  entry_description.editInPlace($.extend(default_edit_in_place_options,{
+    field_type:      'textarea',
+    textarea_rows:   4,
+    url:             '/entries/' + entry_id + '/quick_update',
+    params:          '_method=put&attribute=description'
   }));
 }
 
