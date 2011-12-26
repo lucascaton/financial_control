@@ -2,7 +2,11 @@ FinancialControl::Application.routes.draw do
   root :to => 'pages#index'
   match 'licence' => 'pages#licence'
 
-  resources :entries, :only => [:show]
+  resources :entries, :only => [:show] do
+    member do
+      put :quick_update
+    end
+  end
 
   resources :groups, :except => [:destroy] do
     member do
@@ -14,7 +18,11 @@ FinancialControl::Application.routes.draw do
     end
   end
 
-  resources :time_frames, :only => [:show]
+  resources :time_frames, :only => [:show] do
+    member do
+      get :entries
+    end
+  end
 
   devise_for :users, :controllers => { :registrations => 'users', :sessions => 'sessions' } do
     get 'users/sign_out' => 'sessions#destroy', :as => :destroy_user_session

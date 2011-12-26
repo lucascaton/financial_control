@@ -1,8 +1,8 @@
 pt-BR:
   enumerations:
     entry_kind:
-      credit: 'Crédito'
-      debit: 'Débito'
+      credit: 'Crédito (+)'
+      debit: 'Débito (-)'
     entry_status:
       done: 'Pago'
       late: 'Atrasado'

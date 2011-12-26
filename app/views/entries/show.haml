@@ -1,22 +1,24 @@
-%h3=@entry.title
+%h3="#{@entry.title} (Cód. ##{@entry.id})"
+#entry_id.invisible=@entry.id
+
 .field
   .label=t 'activerecord.attributes.entry.kind'
-  .value=@entry.kind_humanize
+  .value#entry_kind=@entry.kind_humanize
 .field
   .label=t 'activerecord.attributes.entry.description'
-  .value=@entry.description ? @entry.description : '(Sem descrição)'
+  .value#entry_description=@entry.description ? @entry.description : '(Sem descrição)'
 .field
   .label=t 'activerecord.attributes.entry.value'
-  .value=number_to_currency @entry.value
+  .value#entry_value=number_to_currency @entry.value
 .field
   .label=t 'activerecord.attributes.entry.bill_on'
-  .value=@entry.bill_on ? @entry.bill_on : '(Data não definida)'
+  .value#entry_bill_on=@entry.bill_on ? @entry.bill_on : '(Data não definida)'
 .field
   .label=t 'activerecord.attributes.entry.auto_debit'
-  .value=t @entry.auto_debit.to_s
+  .value#entry_auto_debit=t @entry.auto_debit.to_s
 .field
   .label=t 'activerecord.attributes.entry.status'
-  .value
+  .value#entry_status
     =image_tag("icons/#{@entry.status}.png")
     =EntryStatus.t @entry.status
 .field
