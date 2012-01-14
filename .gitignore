@@ -4,6 +4,7 @@
 *~
 .bundle
 .rvmrc
+.routes/
 .sass-cache/
 .webbynode/
 Session.vim
