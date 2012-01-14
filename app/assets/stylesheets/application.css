@@ -4,5 +4,5 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require_tree .
- *= vendor/redmond/jquery-ui-1.8.17.custom
+ *= require_tree ./vendor
 */
