@@ -3,6 +3,9 @@ FinancialControl::Application.routes.draw do
   match 'licence' => 'pages#licence'
 
   resources :entries, :only => [:show] do
+    collection do
+      post :quick_create
+    end
     member do
       put :quick_update
     end

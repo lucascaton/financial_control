@@ -1,6 +1,6 @@
 -content_for :block_title, "Grupo \"#{@time_frame.group.name}\" - Período de #{@time_frame.period}"
 -content_for :sidebar do
-  =render :partial => 'sidebar', :locals => { :links => {} }
+  =render :partial => 'sidebar'
 -content_for :header do
   =javascript_include_tag 'app/time_frames/show'
 
@@ -16,3 +16,36 @@
 
 -# .actions-bar.wat-cf
 -#   .actions
+
+#new_entry_form.invisible
+  %h3 Cadastrar nova conta
+  %form.form
+    .inner.flash.invisible
+    =hidden_field_tag :entry_time_frame_id, @time_frame.id
+    .group
+      %label.label=t 'activerecord.attributes.entry.kind'
+      =select_tag :entry_kind, options_from_collection_for_select(EntryKind.to_a, :last, :first)
+    .group
+      %label.label=t 'activerecord.attributes.entry.title'
+      =text_field_tag :entry_title, nil, :class => 'text_field'
+    .group
+      %label.label=t 'activerecord.attributes.entry.description'
+      =text_area_tag :entry_description, nil, :class => 'text_area', :rows => 4
+    .group
+      %label.label=t 'activerecord.attributes.entry.value'
+      =text_field_tag :entry_value, nil, :class => 'text_field'
+    .group
+      %label.label=t 'activerecord.attributes.entry.bill_on'
+      =text_field_tag :entry_bill_on, nil, :class => 'text_field datepicker'
+    .group
+      %label.label=t 'activerecord.attributes.entry.auto_debit'
+      =check_box_tag :entry_auto_debit
+      %span.description Marque esta opção caso esta conta esteja cadastrada em débito automático. ATENÇÃO: O status NÃO será alterado automaticamente na data de cobrança.
+    -# .group
+    -#   %label.label=t 'activerecord.attributes.entry.credit_card_id'
+    -#   =text_field_tag :credit_card_id, nil, :class => 'text_field'
+
+    .group.navform.wat-cf
+      %button.button{:type => 'submit'}
+        =image_tag 'web-app-theme/icons/tick.png', :alt => t('web-app-theme.save')
+        =t 'web-app-theme.save'

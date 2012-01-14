@@ -1,5 +1,6 @@
 $(function(){
   show_details();
+  configure_form_new_entry();
 });
 
 function show_details(){
@@ -98,4 +99,30 @@ function update_entries(){
 
 function show_error_message(){
   alert('Não foi possível atualizar este item.');
+}
+
+function configure_form_new_entry(){
+  $(document).bind('reveal.facebox', function(){
+    $('#facebox form.form').submit(function(){
+      var time_frame_id = $(this).find('#entry_time_frame_id').val();
+      var kind          = $(this).find('#entry_kind').val();
+      var title         = $(this).find('#entry_title').val();
+      var description   = $(this).find('#entry_description').val();
+      var value         = $(this).find('#entry_value').val();
+      var bill_on       = $(this).find('#entry_bill_on_facebox').val();
+
+      $.post('/entries/quick_create', { time_frame_id: time_frame_id, kind: kind, title: title,
+        description: description, value: value, bill_on: bill_on }, function(data){
+        if(data.successful){
+          $('#container').find('.flash').html('<div class="message notice"><p>Registro criado com sucesso.</p></div>');
+          close_facebox();
+          update_entries();
+        }else{
+          $('#facebox form .flash.invisible').show().html('<div class="message error"><p>' + data.errors + '</p></div>');
+        }
+      });
+
+      return false;
+    });
+  });
 }
