@@ -7,7 +7,14 @@ class EntriesController < ApplicationController
   def quick_update
     entry = Entry.find params[:id]
     attribute = params[:attribute].to_sym
-    update_value = (attribute == :value) ? params[:update_value].gsub(/,/, '.') : params[:update_value]
+    update_value = case attribute
+      when :value
+        params[:update_value].gsub(/,/, '.')
+      when :bill_on
+       Date.strptime params[:update_value], '%d/%m/%Y'
+      else
+        params[:update_value]
+      end
 
     if entry.update_attributes attribute => update_value
       data = case attribute
@@ -15,6 +22,8 @@ class EntriesController < ApplicationController
           entry.kind_humanize
         when :value
           entry.value.to_currency Currency::BRL
+        when :bill_on
+          I18n.l entry.bill_on
         else
           entry.send(attribute)
         end

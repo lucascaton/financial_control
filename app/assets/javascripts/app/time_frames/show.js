@@ -18,6 +18,7 @@ default_edit_in_place_options = {
   bg_over:                 '#BBB',
   saving_text:             'Salvando...',
   select_text:             'Selecione uma opção',
+  default_text:            '(Clique aqui para adicionar um texto)',
   textarea_rows:           3,
   success:                 update_entries,
   error:                   show_error_message,
@@ -32,6 +33,7 @@ function setup_edit_in_place_fields(){
   var entry_kind        = $('#entry_details .field .value#entry_kind');
   var entry_description = $('#entry_details .field .value#entry_description');
   var entry_value       = $('#entry_details .field .value#entry_value');
+  var entry_bill_on     = $('#entry_details .field .value#entry_bill_on');
 
   entry_kind.editInPlace($.extend(default_edit_in_place_options,{
     field_type:      'select',
@@ -52,6 +54,18 @@ function setup_edit_in_place_fields(){
     params:          '_method=put&attribute=value',
     preinit:          function(currentDomNode){
       currentDomNode.html(currentDomNode.html().replace(/R\$ /, '').replace(/,/, '.'));
+    }
+  }));
+
+  entry_bill_on.editInPlace($.extend(default_edit_in_place_options,{
+    field_type:      'text',
+    url:             '/entries/' + entry_id + '/quick_update.js',
+    params:          '_method=put&attribute=bill_on',
+    delegate:{
+      didOpenEditInPlace: function(aDOMNode, aSettingsDict){
+        $(aDOMNode).find('input').datepicker().focus();
+        return false;
+      }
     }
   }));
 }
