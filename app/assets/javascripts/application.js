@@ -42,6 +42,7 @@ function configure_jquery_ui_defaults(){
 
   $(document).bind('reveal.facebox', function(){
     $('#facebox .datepicker').each(function(intIndex){
+      $(this).attr('id', $(this).attr('id') + '_facebox');
       $(this).datepicker();
     });
   });
