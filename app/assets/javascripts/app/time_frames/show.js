@@ -34,6 +34,8 @@ function setup_edit_in_place_fields(){
   var entry_description = $('#entry_details .field .value#entry_description');
   var entry_value       = $('#entry_details .field .value#entry_value');
   var entry_bill_on     = $('#entry_details .field .value#entry_bill_on');
+  var entry_auto_debit  = $('#entry_details .field .value#entry_auto_debit');
+  var entry_status      = $('#entry_details .field .value#entry_status');
 
   entry_kind.editInPlace($.extend(default_edit_in_place_options,{
     field_type:      'select',
@@ -67,6 +69,20 @@ function setup_edit_in_place_fields(){
         return false;
       }
     }
+  }));
+
+  entry_auto_debit.editInPlace($.extend(default_edit_in_place_options,{
+    field_type:      'select',
+    select_options:  [['Sim', 't'], ['Não', 'f']],
+    url:             '/entries/' + entry_id + '/quick_update.js',
+    params:          '_method=put&attribute=auto_debit'
+  }));
+
+  entry_status.editInPlace($.extend(default_edit_in_place_options,{
+    field_type:      'select',
+    select_options:  [['Pago!', 't'], ['Pendente...', 'f']],
+    url:             '/entries/' + entry_id + '/quick_update.js',
+    params:          '_method=put&attribute=done'
   }));
 }
 

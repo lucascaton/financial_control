@@ -35,7 +35,7 @@ function configure_jquery_ui_defaults(){
     prevText: 'Anterior',
     nextText: 'Próximo',
     dayNamesMin: ['Se', 'Te', 'Qu', 'Qu', 'Se', 'Sá', 'Do'],
-    monthNamesArrayDefault: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
     'Julho', 'Augosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
   });
 }

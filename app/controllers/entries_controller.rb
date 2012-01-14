@@ -24,6 +24,10 @@ class EntriesController < ApplicationController
           entry.value.to_currency Currency::BRL
         when :bill_on
           I18n.l entry.bill_on
+        when :auto_debit
+          I18n.t entry.auto_debit.to_s
+        when :done
+          I18n.t entry.done.to_s
         else
           entry.send(attribute)
         end
