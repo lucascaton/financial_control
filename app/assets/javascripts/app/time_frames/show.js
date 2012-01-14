@@ -36,19 +36,19 @@ function setup_edit_in_place_fields(){
   entry_kind.editInPlace($.extend(default_edit_in_place_options,{
     field_type:      'select',
     select_options:  [['Débito (-)', 'debit'], ['Crédito (+)', 'credit']],
-    url:             '/entries/' + entry_id + '/quick_update',
+    url:             '/entries/' + entry_id + '/quick_update.js',
     params:          '_method=put&attribute=kind'
   }));
 
   entry_description.editInPlace($.extend(default_edit_in_place_options,{
     field_type:      'textarea',
-    url:             '/entries/' + entry_id + '/quick_update',
+    url:             '/entries/' + entry_id + '/quick_update.js',
     params:          '_method=put&attribute=description'
   }));
 
   entry_value.editInPlace($.extend(default_edit_in_place_options,{
     field_type:      'text',
-    url:             '/entries/' + entry_id + '/quick_update',
+    url:             '/entries/' + entry_id + '/quick_update.js',
     params:          '_method=put&attribute=value',
     preinit:          function(currentDomNode){
       currentDomNode.html(currentDomNode.html().replace(/R\$ /, '').replace(/,/, '.'));
