@@ -28,10 +28,10 @@ default_edit_in_place_options = {
 };
 
 function setup_edit_in_place_fields(){
-  var entry_kind = $('#entry_details .field .value#entry_kind');
+  var entry_id          = $('#entry_details #entry_id').html();
+  var entry_kind        = $('#entry_details .field .value#entry_kind');
   var entry_description = $('#entry_details .field .value#entry_description');
-  var entry_value = $('#entry_details .field .value#entry_value');
-  var entry_id = $('#entry_details #entry_id').html();
+  var entry_value       = $('#entry_details .field .value#entry_value');
 
   entry_kind.editInPlace($.extend(default_edit_in_place_options,{
     field_type:      'select',
