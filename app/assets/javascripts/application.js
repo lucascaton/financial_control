@@ -5,11 +5,13 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require_tree ./vendor
 
 $(function(){
   configure_external_links();
+  configure_jquery_ui_defaults();
 });
 
 function configure_external_links(){
@@ -25,4 +27,15 @@ function show_loading(active){
   }else{
     $('#loading').fadeOut(100);
   }
+}
+
+function configure_jquery_ui_defaults(){
+  $.datepicker.setDefaults({
+    dateFormat: 'dd/mm/yy',
+    prevText: 'Anterior',
+    nextText: 'Próximo',
+    dayNamesMin: ['Se', 'Te', 'Qu', 'Qu', 'Se', 'Sá', 'Do'],
+    monthNamesArrayDefault: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    'Julho', 'Augosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+  });
 }
