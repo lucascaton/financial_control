@@ -12,7 +12,7 @@
   .value#entry_value=number_to_currency @entry.value
 .field
   .label=t 'activerecord.attributes.entry.bill_on'
-  .value#entry_bill_on=@entry.bill_on ? @entry.bill_on : '(Data não definida)'
+  .value#entry_bill_on=@entry.bill_on ? l(@entry.bill_on) : '(Data não definida)'
 .field
   .label=t 'activerecord.attributes.entry.auto_debit'
   .value#entry_auto_debit=t @entry.auto_debit.to_s
