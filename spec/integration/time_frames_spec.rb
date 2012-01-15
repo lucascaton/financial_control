@@ -56,7 +56,7 @@ feature 'Time frame management', %q{
     page.should have_content('Período removido com sucesso.')
   end
 
-  scenario 'Trying remove a time frame from a group' do
+  scenario 'Trying to remove a time frame from a group' do
     pending
     time_frame = FactoryGirl.create :time_frame, :group => @group
     visit "/groups/#{@group.id}/time_frames"
