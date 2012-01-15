@@ -13,6 +13,7 @@ $(function(){
   configure_external_links();
   configure_jquery_ui_defaults();
   configure_facebox();
+  configure_inputs();
 });
 
 function configure_external_links(){
@@ -44,6 +45,7 @@ function configure_jquery_ui_defaults(){
     $('#facebox .datepicker').each(function(intIndex){
       $(this).attr('id', $(this).attr('id') + '_facebox');
       $(this).datepicker();
+      configure_inputs();
     });
   });
 }
@@ -58,4 +60,16 @@ function configure_facebox(){
     closeImage   : '../assets/vendor/facebox/closelabel.png',
     opacity      : 0.3
   });
+}
+
+function configure_inputs(){
+  configure_masks();
+}
+
+function configure_masks(){
+  $('input.price').setMask({ mask: '99.99999999', type : 'reverse', defaultValue: '000' });
+  $('input.cep').setMask({ mask: '99999-999' });
+  $('input.phone').setMask({ mask: '(99) 9999-9999' });
+  $('input.cpf').setMask({ mask: '99999999999' });
+  $('input.cnpj').setMask({ mask: '99999999999999' });
 }

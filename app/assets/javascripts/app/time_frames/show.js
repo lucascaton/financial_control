@@ -55,8 +55,14 @@ function setup_edit_in_place_fields(){
     field_type:      'text',
     url:             '/entries/' + entry_id + '/quick_update.js',
     params:          '_method=put&attribute=value',
-    preinit:          function(currentDomNode){
-      currentDomNode.html(currentDomNode.html().replace(/R\$ /, '').replace(/,/, '.'));
+    delegate:{
+      didOpenEditInPlace: function(aDOMNode, aSettingsDict){
+        if(aDOMNode.attr('id') == 'entry_value'){
+          $(aDOMNode).find('input').addClass('price').html().replace(/R\$ /, '').replace(/,/, '.');
+          configure_inputs();
+        }
+        return false;
+      }
     }
   }));
 
