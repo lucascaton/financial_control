@@ -66,7 +66,8 @@ function setup_edit_in_place_fields(){
     params:          '_method=put&attribute=bill_on',
     delegate:{
       didOpenEditInPlace: function(aDOMNode, aSettingsDict){
-        $(aDOMNode).find('input').datepicker().focus();
+        if(aDOMNode.attr('id') == 'entry_bill_on')
+          $(aDOMNode).find('input').datepicker().focus();
         return false;
       }
     }
