@@ -40,10 +40,10 @@ feature 'Time frame management', %q{
 
   scenario 'Trying to add a invalid time frame to a group' do
     time_frame = FactoryGirl.create :time_frame, :group => @group,
-      :start_on => Date.parse('01-12-2011'), :end_on => Date.parse('31-12-2011')
+      :start_on => Date.today.beginning_of_month, :end_on => Date.today.end_of_month
     visit "/groups/#{@group.id}/time_frames"
-    select 'Dezembro', :from => 'add_time_frame_period_2i'
-    select '2011', :from => 'add_time_frame_period_1i'
+    select I18n.l(Date.today, :format => :only_month), :from => 'add_time_frame_period_2i'
+    select Date.today.year.to_s, :from => 'add_time_frame_period_1i'
     click_button 'Adicionar'
     page.should have_content('Não foi possível adicionar esse período.')
   end

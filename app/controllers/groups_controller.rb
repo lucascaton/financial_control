@@ -72,7 +72,7 @@ class GroupsController < ApplicationController
 
   def add_time_frame
     @group = Group.find params[:id]
-    start_on = Date.civil(params[:add_time_frame]['period(1i)'].to_i, params[:add_time_frame]['period(2i)'].to_i, 1)
+    start_on = Date.civil params[:add_time_frame]['period(1i)'].to_i, params[:add_time_frame]['period(2i)'].to_i, 1
     end_on = start_on.end_of_month
 
     time_frame = TimeFrame.new :group_id => @group.id, :start_on => start_on, :end_on => end_on
