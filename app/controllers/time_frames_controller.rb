@@ -12,5 +12,6 @@ class TimeFramesController < ApplicationController
   def load_time_frame_and_entries
     @time_frame = TimeFrame.find params[:id]
     @entries = @time_frame.entries.active.order 'bill_on'
+    flash[:error] = 'Nenhuma conta cadastrada neste período.' if @entries.empty?
   end
 end
