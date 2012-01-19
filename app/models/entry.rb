@@ -47,8 +47,12 @@ class Entry < ActiveRecord::Base
     end
   end
 
+  def destroyable?
+    record_kind != EntryRecordKind::UNEXPECTED
+  end
+
   def destroy
-    update_attribute :deleted_at, Time.now
+    update_attribute :deleted_at, Time.now if destroyable?
   end
 
   private

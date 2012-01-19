@@ -87,6 +87,40 @@ describe Entry do
     end
   end
 
+  describe '#destroyable?' do
+    it 'returns TRUE if it has NO a record_kind' do
+      FactoryGirl.create(:entry, :record_kind => nil).destroyable?.should be_true
+    end
+
+    it 'returns TRUE if it is was created from a fixes entry' do
+      FactoryGirl.create(:entry, :record_kind => EntryRecordKind::CREATED_FROM_A_FIXED_ENTRY).destroyable?.should be_true
+    end
+
+    it 'returns FALSE if it is a unexpected entry' do
+      FactoryGirl.create(:entry, :record_kind => EntryRecordKind::UNEXPECTED).destroyable?.should be_false
+    end
+  end
+
+  describe '#destroy' do
+    it 'sets deleted_at if it has NO record kind' do
+      entry = FactoryGirl.create :entry, :record_kind => nil
+      entry.destroy
+      entry.reload.deleted_at.should be_within(1).of(Time.now)
+    end
+
+    it 'sets deleted_at if it was created from a fixed entry' do
+      entry = FactoryGirl.create :entry, :record_kind => EntryRecordKind::CREATED_FROM_A_FIXED_ENTRY
+      entry.destroy
+      entry.reload.deleted_at.should be_within(1).of(Time.now)
+    end
+
+    it 'does not set deleted_at if it cannot be destroyed' do
+      entry = FactoryGirl.create :entry, :record_kind => EntryRecordKind::UNEXPECTED
+      entry.destroy
+      entry.reload.deleted_at.should be_nil
+    end
+  end
+
   describe '.without_record_kind' do
     DatabaseCleaner.clean
     entry_1 = FactoryGirl.create :entry
