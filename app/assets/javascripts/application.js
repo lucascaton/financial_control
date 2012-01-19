@@ -36,6 +36,7 @@ function configureJqueryUIDefaults(){
     dateFormat:   'dd/mm/yy',
     prevText:     'Anterior',
     nextText:     'Próximo',
+    stepMonths:   0,
     dayNamesMin:  ['Se', 'Te', 'Qu', 'Qu', 'Se', 'Sá', 'Do'],
     monthNames:   ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
     'Julho', 'Augosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
