@@ -5,7 +5,7 @@
   %ul.list
     -@groups.each do |group|
       %li
-        .left=image_tag 'icons/money.png'
+        .left=image_tag 'icons/invoice.png'
         .item
           %h3=link_to group.name, group
           -if group.time_frames.present?
