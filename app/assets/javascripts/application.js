@@ -61,6 +61,11 @@ function configureFacebox(){
     closeImage:    '../assets/vendor/facebox/closelabel.png',
     opacity:       0.3
   });
+
+  $(document).bind('reveal.facebox', function(){
+    clearFlashMessage();
+    clearFaceboxFlashMessage();
+  });
 }
 
 function configureInputs(){
@@ -69,8 +74,22 @@ function configureInputs(){
 
 function configureMasks(){
   $('input.price').setMask({ mask: '99.99999999', type : 'reverse', defaultValue: '000' });
-  $('input.cep').setMask({ mask: '99999-999' });
-  $('input.phone').setMask({ mask: '(99) 9999-9999' });
-  $('input.cpf').setMask({ mask: '99999999999' });
-  $('input.cnpj').setMask({ mask: '99999999999999' });
+}
+
+function setFlashMessage(cssClass, message){
+  $('#container').find('.flash').html('<div class="message ' + cssClass + '"><p>' + message + '</p></div>');
+}
+
+function setFaceboxFlashMessage(cssClass, message){
+  $('#facebox form .flash.invisible').show().html('<div class="message ' + cssClass + '"><p>' + message + '</p></div>');
+}
+
+function clearFlashMessage(){
+  $('#container').find('.flash').fadeOut(500, function(){
+    $(this).html('').show();
+  });
+}
+
+function clearFaceboxFlashMessage(cssClass, message){
+  $('#facebox form .flash.invisible').hide();
 }

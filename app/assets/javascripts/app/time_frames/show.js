@@ -5,6 +5,7 @@ $(function(){
 
 function showDetails(){
   $('table.table#entries tbody tr').click(function(){
+    clearFlashMessage();
     showLoading(true);
     entryId = $(this).attr('id').replace(/entry_/, '');
     $.get('/entries/' + entryId, {}, function(data){
@@ -105,7 +106,7 @@ function updateEntries(){
 }
 
 function showErrorMessage(){
-  alert('Não foi possível atualizar este item.');
+  setFlashMessage('error', 'Não foi possível atualizar este item.');
 }
 
 function configureFormNewEntry(){
@@ -123,11 +124,11 @@ function configureFormNewEntry(){
       $.post('/entries/quick_create', { time_frame_id: timeFrameId, kind: kind, title: title,
         description: description, value: value, bill_on: billOn }, function(data){
         if(data.successful){
-          $('#container').find('.flash').html('<div class="message notice"><p>Registro criado com sucesso.</p></div>');
+          setFlashMessage('notice', 'Registro criado com sucesso.');
           closeFacebox();
           updateEntries();
         }else{
-          $('#facebox form .flash.invisible').show().html('<div class="message error"><p>' + data.errors + '</p></div>');
+          setFaceboxFlashMessage('error', data.errors);
         }
         showLoading(false);
       });
