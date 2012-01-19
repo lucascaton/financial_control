@@ -23,6 +23,8 @@ class Entry < ActiveRecord::Base
   validates_inclusion_of :done, :in => [true, false]
   validates_inclusion_of :kind, :in => EntryKind.list
 
+  validate :validate_time_frame_period
+
   belongs_to :time_frame
   # belongs_to :credit_card
 
@@ -44,5 +46,13 @@ class Entry < ActiveRecord::Base
 
   def destroy
     update_attribute :deleted_at, Time.now
+  end
+
+  private
+  def validate_time_frame_period
+    return if bill_on.nil?
+    unless bill_on.between? time_frame.start_on, time_frame.end_on
+      errors.add :bill_on, :bill_on_invalid_with_this_time_frame
+    end
   end
 end

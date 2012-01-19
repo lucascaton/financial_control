@@ -30,6 +30,7 @@ pt-BR:
       too_long: 'é muito longo (não mais do que %{count} caracteres)'
       too_short: 'é muito curto (não menos do que %{count} caracteres)'
       wrong_length: 'não é do tamanho correto (precisa ter %{count} caracteres)'
+      bill_on_invalid_with_this_time_frame: 'não é compatível com período atual'
 
   attributes:
     created_at: "Criado em"

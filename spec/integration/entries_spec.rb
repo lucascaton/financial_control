@@ -50,6 +50,17 @@ feature 'Entries management', %q{
     page.should have_content('Título não pode ficar em branco')
   end
 
+  scenario 'Trying to create a new entry with a invalid period', :js => true do
+    visit time_frame_path(@time_frame)
+    click_link 'new_entry_link'
+    fill_in 'entry_title', :with => "Castle's rent"
+    fill_in 'entry_description', :with => "My new castle's rent"
+    fill_in 'entry_value', :with => '400000.00'
+    fill_in 'entry_bill_on', :with => I18n.l(1.month.ago.to_date)
+    click_button 'save_button'
+    page.should have_content('Data de cobrança não é compatível com período atual')
+  end
+
   scenario 'Removing a entry', :js => true do
     pending
   end
