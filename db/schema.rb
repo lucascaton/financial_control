@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111204134851) do
+ActiveRecord::Schema.define(:version => 20120119020913) do
 
   create_table "entries", :force => true do |t|
     t.integer  "time_frame_id",                     :null => false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20111204134851) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "record_kind"
   end
 
   create_table "groups", :force => true do |t|

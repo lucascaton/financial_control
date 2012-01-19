@@ -15,12 +15,14 @@
 #  deleted_at     :datetime
 #  created_at     :datetime
 #  updated_at     :datetime
+#  record_kind    :string(255)
 #
 
 class Entry < ActiveRecord::Base
   validates_presence_of :time_frame_id, :kind, :title, :value
   validates_inclusion_of :auto_debit, :in => [true, false]
   validates_inclusion_of :done, :in => [true, false]
+  validates_inclusion_of :record_kind, :in => EntryRecordKind.list, :allow_nil => true
 
   validate :validate_time_frame_period
 
@@ -28,6 +30,7 @@ class Entry < ActiveRecord::Base
   # belongs_to :credit_card
 
   has_enumeration_for :kind, :with => EntryKind, :create_helpers => true, :required => true
+  has_enumeration_for :record_kind, :with => EntryRecordKind, :create_helpers => true
 
   scope :active, where(:deleted_at => nil)
 

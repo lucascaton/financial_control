@@ -15,6 +15,7 @@
 #  deleted_at     :datetime
 #  created_at     :datetime
 #  updated_at     :datetime
+#  record_kind    :string(255)
 #
 
 require 'spec_helper'
@@ -37,6 +38,9 @@ describe Entry do
 
   [nil, 'other'].each { |kind| it { should_not allow_value(kind).for(:kind) }}
   EntryKind.list.each { |kind| it { should allow_value(kind).for(:kind) }}
+
+  it { should_not allow_value('other').for(:record_kind) }
+  [EntryRecordKind.list << nil].flatten.each { |record_kind| it { should allow_value(record_kind).for(:record_kind) }}
 
   it { should belong_to :time_frame }
   # it { should belong_to :credit_card }
