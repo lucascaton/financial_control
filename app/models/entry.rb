@@ -21,14 +21,13 @@ class Entry < ActiveRecord::Base
   validates_presence_of :time_frame_id, :kind, :title, :value
   validates_inclusion_of :auto_debit, :in => [true, false]
   validates_inclusion_of :done, :in => [true, false]
-  validates_inclusion_of :kind, :in => EntryKind.list
 
   validate :validate_time_frame_period
 
   belongs_to :time_frame
   # belongs_to :credit_card
 
-  has_enumeration_for :kind, :with => EntryKind, :create_helpers => true
+  has_enumeration_for :kind, :with => EntryKind, :create_helpers => true, :required => true
 
   scope :active, where(:deleted_at => nil)
 
