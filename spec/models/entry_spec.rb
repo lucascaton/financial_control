@@ -86,4 +86,13 @@ describe Entry do
       entry.status.should == EntryStatus::PENDING
     end
   end
+
+  describe '.without_record_kind' do
+    DatabaseCleaner.clean
+    entry_1 = FactoryGirl.create :entry
+    entry_2 = FactoryGirl.create :entry, :record_kind => EntryRecordKind.list.first
+    entry_3 = FactoryGirl.create :entry
+
+    Entry.without_record_kind.should =~ [entry_1, entry_3]
+  end
 end

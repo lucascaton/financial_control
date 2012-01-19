@@ -33,6 +33,7 @@ class Entry < ActiveRecord::Base
   has_enumeration_for :record_kind, :with => EntryRecordKind, :create_helpers => true
 
   scope :active, where(:deleted_at => nil)
+  scope :without_record_kind, where(:record_kind => nil)
 
   def status
     if done?
