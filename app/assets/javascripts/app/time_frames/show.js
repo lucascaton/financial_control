@@ -1,74 +1,74 @@
 $(function(){
-  show_details();
-  configure_form_new_entry();
+  showDetails();
+  configureFormNewEntry();
 });
 
-function show_details(){
+function showDetails(){
   $('table.table#entries tbody tr').click(function(){
-    show_loading(true);
-    entry_id = $(this).attr('id').replace(/entry_/, '');
-    $.get('/entries/' + entry_id, {}, function(data){
+    showLoading(true);
+    entryId = $(this).attr('id').replace(/entry_/, '');
+    $.get('/entries/' + entryId, {}, function(data){
       $('#entry_details').html(data);
-      setup_edit_in_place_fields();
-      show_loading(false);
+      setupEditInPlaceFields();
+      showLoading(false);
     });
   });
 }
 
-default_edit_in_place_options = {
+defaultEditInPlaceOptions = {
   bg_over:                 '#BBB',
   saving_text:             'Salvando...',
   select_text:             'Selecione uma opção',
   default_text:            '(Clique aqui para adicionar um texto)',
   textarea_rows:           3,
-  success:                 update_entries,
-  error:                   show_error_message,
+  success:                 updateEntries,
+  error:                   showErrorMessage,
   show_buttons:            true,
   save_button:             ' <button class="inplace_save">Salvar</button>',
   cancel_button:           '',
   save_if_nothing_changed: true
 };
 
-function setup_edit_in_place_fields(){
-  var entry_id          = $('#entry_details #entry_id').html();
-  var entry_kind        = $('#entry_details .field .value#entry_kind');
-  var entry_description = $('#entry_details .field .value#entry_description');
-  var entry_value       = $('#entry_details .field .value#entry_value');
-  var entry_bill_on     = $('#entry_details .field .value#entry_bill_on');
-  var entry_auto_debit  = $('#entry_details .field .value#entry_auto_debit');
-  var entry_status      = $('#entry_details .field .value#entry_status');
+function setupEditInPlaceFields(){
+  var entryId          = $('#entry_details #entry_id').html();
+  var entryKind        = $('#entry_details .field .value#entry_kind');
+  var entryDescription = $('#entry_details .field .value#entry_description');
+  var entryValue       = $('#entry_details .field .value#entry_value');
+  var entryBillOn      = $('#entry_details .field .value#entry_bill_on');
+  var entryAutoDebit   = $('#entry_details .field .value#entry_auto_debit');
+  var entryStatus      = $('#entry_details .field .value#entry_status');
 
-  entry_kind.editInPlace($.extend(default_edit_in_place_options,{
+  entryKind.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'select',
     select_options:  [['Débito (-)', 'debit'], ['Crédito (+)', 'credit']],
-    url:             '/entries/' + entry_id + '/quick_update.js',
+    url:             '/entries/' + entryId + '/quick_update.js',
     params:          '_method=put&attribute=kind'
   }));
 
-  entry_description.editInPlace($.extend(default_edit_in_place_options,{
+  entryDescription.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'textarea',
-    url:             '/entries/' + entry_id + '/quick_update.js',
+    url:             '/entries/' + entryId + '/quick_update.js',
     params:          '_method=put&attribute=description'
   }));
 
-  entry_value.editInPlace($.extend(default_edit_in_place_options,{
+  entryValue.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'text',
-    url:             '/entries/' + entry_id + '/quick_update.js',
+    url:             '/entries/' + entryId + '/quick_update.js',
     params:          '_method=put&attribute=value',
     delegate:{
       didOpenEditInPlace: function(aDOMNode, aSettingsDict){
         if(aDOMNode.attr('id') == 'entry_value'){
           $(aDOMNode).find('input').addClass('price').html().replace(/R\$ /, '').replace(/,/, '.');
-          configure_inputs();
+          configureInputs();
         }
         return false;
       }
     }
   }));
 
-  entry_bill_on.editInPlace($.extend(default_edit_in_place_options,{
+  entryBillOn.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'text',
-    url:             '/entries/' + entry_id + '/quick_update.js',
+    url:             '/entries/' + entryId + '/quick_update.js',
     params:          '_method=put&attribute=bill_on',
     delegate:{
       didOpenEditInPlace: function(aDOMNode, aSettingsDict){
@@ -79,54 +79,57 @@ function setup_edit_in_place_fields(){
     }
   }));
 
-  entry_auto_debit.editInPlace($.extend(default_edit_in_place_options,{
+  entryAutoDebit.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'select',
     select_options:  [['Sim', 't'], ['Não', 'f']],
-    url:             '/entries/' + entry_id + '/quick_update.js',
+    url:             '/entries/' + entryId + '/quick_update.js',
     params:          '_method=put&attribute=auto_debit'
   }));
 
-  entry_status.editInPlace($.extend(default_edit_in_place_options,{
+  entryStatus.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'select',
     select_options:  [['Pago!', 't'], ['Pendente...', 'f']],
-    url:             '/entries/' + entry_id + '/quick_update.js',
+    url:             '/entries/' + entryId + '/quick_update.js',
     params:          '_method=put&attribute=done'
   }));
 }
 
-function update_entries(){
-  show_loading(true);
-  time_frame_id = $('#time_frame_id').val();
-  $.get('/time_frames/' + time_frame_id + '/entries', {}, function(data){
+function updateEntries(){
+  showLoading(true);
+  timeFrameId = $('#time_frame_id').val();
+  $.get('/time_frames/' + timeFrameId + '/entries', {}, function(data){
     $('#entries').html(data);
-    show_details();
-    show_loading(false);
+    showDetails();
+    showLoading(false);
   });
 }
 
-function show_error_message(){
+function showErrorMessage(){
   alert('Não foi possível atualizar este item.');
 }
 
-function configure_form_new_entry(){
+function configureFormNewEntry(){
   $(document).bind('reveal.facebox', function(){
     $('#facebox form.form').submit(function(){
-      var time_frame_id = $(this).find('#entry_time_frame_id').val();
+      showLoading(true);
+
+      var timeFrameId   = $(this).find('#entry_time_frame_id').val();
       var kind          = $(this).find('#entry_kind').val();
       var title         = $(this).find('#entry_title').val();
       var description   = $(this).find('#entry_description').val();
       var value         = $(this).find('#entry_value').val();
-      var bill_on       = $(this).find('#entry_bill_on_facebox').val();
+      var billOn        = $(this).find('#entry_bill_on_facebox').val();
 
-      $.post('/entries/quick_create', { time_frame_id: time_frame_id, kind: kind, title: title,
-        description: description, value: value, bill_on: bill_on }, function(data){
+      $.post('/entries/quick_create', { time_frame_id: timeFrameId, kind: kind, title: title,
+        description: description, value: value, bill_on: billOn }, function(data){
         if(data.successful){
           $('#container').find('.flash').html('<div class="message notice"><p>Registro criado com sucesso.</p></div>');
-          close_facebox();
-          update_entries();
+          closeFacebox();
+          updateEntries();
         }else{
           $('#facebox form .flash.invisible').show().html('<div class="message error"><p>' + data.errors + '</p></div>');
         }
+        showLoading(false);
       });
 
       return false;

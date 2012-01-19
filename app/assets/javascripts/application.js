@@ -10,20 +10,20 @@
 //= require_tree ./vendor
 
 $(function(){
-  configure_external_links();
-  configure_jquery_ui_defaults();
-  configure_facebox();
-  configure_inputs();
+  configureExternalLinks();
+  configureJqueryUIDefaults();
+  configureFacebox();
+  configureInputs();
 });
 
-function configure_external_links(){
+function configureExternalLinks(){
   $('.external').click(function(){
     window.open($(this).attr('href'));
     return false;
   });
 }
 
-function show_loading(active){
+function showLoading(active){
   if(active){
     $('#loading').fadeIn(200);
   }else{
@@ -31,13 +31,13 @@ function show_loading(active){
   }
 }
 
-function configure_jquery_ui_defaults(){
+function configureJqueryUIDefaults(){
   $.datepicker.setDefaults({
-    dateFormat: 'dd/mm/yy',
-    prevText: 'Anterior',
-    nextText: 'Próximo',
-    dayNamesMin: ['Se', 'Te', 'Qu', 'Qu', 'Se', 'Sá', 'Do'],
-    monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    dateFormat:   'dd/mm/yy',
+    prevText:     'Anterior',
+    nextText:     'Próximo',
+    dayNamesMin:  ['Se', 'Te', 'Qu', 'Qu', 'Se', 'Sá', 'Do'],
+    monthNames:   ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
     'Julho', 'Augosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
   });
 
@@ -45,28 +45,28 @@ function configure_jquery_ui_defaults(){
     $('#facebox .datepicker').each(function(intIndex){
       $(this).attr('id', $(this).attr('id') + '_facebox');
       $(this).datepicker();
-      configure_inputs();
+      configureInputs();
     });
   });
 }
 
-function close_facebox(){
+function closeFacebox(){
   $(document).trigger('close.facebox');
 }
 
-function configure_facebox(){
+function configureFacebox(){
   $('a[rel*=facebox]').facebox({
-    loadingImage : '../assets/vendor/facebox/loading.gif',
-    closeImage   : '../assets/vendor/facebox/closelabel.png',
-    opacity      : 0.3
+    loadingImage:  '../assets/vendor/facebox/loading.gif',
+    closeImage:    '../assets/vendor/facebox/closelabel.png',
+    opacity:       0.3
   });
 }
 
-function configure_inputs(){
-  configure_masks();
+function configureInputs(){
+  configureMasks();
 }
 
-function configure_masks(){
+function configureMasks(){
   $('input.price').setMask({ mask: '99.99999999', type : 'reverse', defaultValue: '000' });
   $('input.cep').setMask({ mask: '99999-999' });
   $('input.phone').setMask({ mask: '(99) 9999-9999' });
