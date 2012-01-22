@@ -68,4 +68,60 @@ feature 'Entries management', %q{
   scenario 'Trying to remove a entry', :js => true do
     pending
   end
+
+  scenario "Editing a entry's kind", :js => true do
+    entry = FactoryGirl.create :entry, :title => "Castle's rent", :time_frame => @time_frame,
+      :bill_on => Date.today, :kind => 'credit', :value => 1000
+    visit time_frame_path(@time_frame)
+    find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]").click
+    find(:xpath, '//div[@id="entry_kind"]').click
+    select 'Débito (-)', :from => 'inplace_value'
+    click_button 'Salvar'
+    td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_debit\"]")
+    td.should have_content('R$ 1.000,00')
+  end
+
+  scenario "Editing a entry's description", :js => true do
+    entry = FactoryGirl.create :entry, :time_frame => @time_frame, :description => "My new castle's rent"
+    visit time_frame_path(@time_frame)
+    find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]").click
+    find(:xpath, '//div[@id="entry_description"]').click
+    fill_in 'inplace_value', :with => 'New description'
+    click_button 'Salvar'
+    td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_description\"]")
+    td.should have_content('New description')
+  end
+
+  scenario "Editing a entry's value", :js => true do
+    entry = FactoryGirl.create :entry, :time_frame => @time_frame, :kind => 'debit', :value => 1000
+    visit time_frame_path(@time_frame)
+    find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]").click
+    find(:xpath, '//div[@id="entry_value"]').click
+    fill_in 'inplace_value', :with => '1200,00'
+    click_button 'Salvar'
+    td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_debit\"]")
+    td.should have_content('R$ 1.200,00')
+  end
+
+  scenario "Editing a entry's bill_on", :js => true do
+    entry = FactoryGirl.create :entry, :time_frame => @time_frame, :bill_on => Date.today
+    visit time_frame_path(@time_frame)
+    find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]").click
+    find(:xpath, '//div[@id="entry_bill_on"]').click
+    fill_in 'inplace_value', :with => I18n.l(Date.tomorrow)
+    click_button 'Salvar'
+    td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_bill_on\"]")
+    td.should have_content(I18n.l(Date.tomorrow))
+  end
+
+  scenario "Editing a entry's status", :js => true do
+    entry = FactoryGirl.create :entry, :time_frame => @time_frame, :done => false
+    visit time_frame_path(@time_frame)
+    find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]").click
+    find(:xpath, '//div[@id="entry_status"]').click
+    select 'Pago!', :from => 'inplace_value'
+    click_button 'Salvar'
+    td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_status\"]")
+    td.should have_content('Pago')
+  end
 end

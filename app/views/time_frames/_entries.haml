@@ -1,5 +1,5 @@
 -if @entries.present?
-  %table.table#entries
+  %table.table#entries_table
     %thead
       %tr
         %th.short=t 'activerecord.attributes.entry.bill_on'
@@ -11,12 +11,12 @@
     %tbody
       -@entries.each do |entry|
         %tr{:class => cycle('odd', 'even'), :id => "entry_#{entry.id}"}
-          %td.short=entry.bill_on ? l(entry.bill_on) : '-'
-          %td=entry.title
-          %td.short=entry.debit? ? number_to_currency(entry.value) : ''
-          %td.short=entry.credit? ? number_to_currency(entry.value) : ''
-          %td.short
+          %td#td_entry_bill_on.short=entry.bill_on ? l(entry.bill_on) : '-'
+          %td#td_entry_title=entry.title
+          %td#td_entry_debit.short=entry.debit? ? number_to_currency(entry.value) : ''
+          %td#td_entry_credit.short=entry.credit? ? number_to_currency(entry.value) : ''
+          %td#td_entry_status.short
             =image_tag("icons/#{entry.status}.png")
             %br
             =EntryStatus.t entry.status
-          %td=truncate entry.description, :length => 60
+          %td#td_entry_description=truncate entry.description, :length => 60

@@ -4,7 +4,7 @@ $(function(){
 });
 
 function showDetails(){
-  $('table.table#entries tbody tr').click(function(){
+  $('table.table#entries_table tbody tr').click(function(){
     clearFlashMessage();
     showLoading(true);
     entryId = $(this).attr('id').replace(/entry_/, '');
