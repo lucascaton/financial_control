@@ -69,6 +69,18 @@ feature 'Entries management', %q{
     pending
   end
 
+  scenario "Editing a entry's title", :js => true do
+    entry = FactoryGirl.create :entry, :time_frame => @time_frame, :title => "Castle's rent"
+    visit time_frame_path(@time_frame)
+    find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]").click
+    find(:xpath, '//h3[@id="entry_title"]').click
+    fill_in 'inplace_value', :with => 'New title'
+    click_button 'Salvar'
+    find(:xpath, '//h3[@id="entry_title"]').should have_content('New title')
+    td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_title\"]")
+    td.should have_content('New title')
+  end
+
   scenario "Editing a entry's kind", :js => true do
     entry = FactoryGirl.create :entry, :title => "Castle's rent", :time_frame => @time_frame,
       :bill_on => Date.today, :kind => 'credit', :value => 1000
@@ -77,6 +89,7 @@ feature 'Entries management', %q{
     find(:xpath, '//div[@id="entry_kind"]').click
     select 'Débito (-)', :from => 'inplace_value'
     click_button 'Salvar'
+    find(:xpath, '//div[@id="entry_kind"]').should have_content('Débito (-)')
     td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_debit\"]")
     td.should have_content('R$ 1.000,00')
   end
@@ -88,6 +101,7 @@ feature 'Entries management', %q{
     find(:xpath, '//div[@id="entry_description"]').click
     fill_in 'inplace_value', :with => 'New description'
     click_button 'Salvar'
+    find(:xpath, '//div[@id="entry_description"]').should have_content('New description')
     td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_description\"]")
     td.should have_content('New description')
   end
@@ -99,6 +113,7 @@ feature 'Entries management', %q{
     find(:xpath, '//div[@id="entry_value"]').click
     fill_in 'inplace_value', :with => '1200,00'
     click_button 'Salvar'
+    find(:xpath, '//div[@id="entry_value"]').should have_content('R$ 1.200,00')
     td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_debit\"]")
     td.should have_content('R$ 1.200,00')
   end
@@ -110,6 +125,7 @@ feature 'Entries management', %q{
     find(:xpath, '//div[@id="entry_bill_on"]').click
     fill_in 'inplace_value', :with => I18n.l(Date.tomorrow)
     click_button 'Salvar'
+    find(:xpath, '//div[@id="entry_bill_on"]').should have_content(I18n.l(Date.tomorrow))
     td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_bill_on\"]")
     td.should have_content(I18n.l(Date.tomorrow))
   end
@@ -121,6 +137,7 @@ feature 'Entries management', %q{
     find(:xpath, '//div[@id="entry_status"]').click
     select 'Pago!', :from => 'inplace_value'
     click_button 'Salvar'
+    find(:xpath, '//div[@id="entry_status"]').should have_content('Pago')
     td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_status\"]")
     td.should have_content('Pago')
   end

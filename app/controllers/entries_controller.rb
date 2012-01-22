@@ -39,7 +39,7 @@ class EntriesController < ApplicationController
         when :auto_debit
           I18n.t entry.auto_debit.to_s
         when :done
-          I18n.t entry.done.to_s
+          EntryStatus.t entry.status
         else
           entry.send(attribute)
         end

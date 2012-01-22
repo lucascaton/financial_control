@@ -32,12 +32,19 @@ defaultEditInPlaceOptions = {
 
 function setupEditInPlaceFields(){
   var entryId          = $('#entry_details #entry_id').html();
+  var entryTitle       = $('#entry_details h3#entry_title');
   var entryKind        = $('#entry_details .field .value#entry_kind');
   var entryDescription = $('#entry_details .field .value#entry_description');
   var entryValue       = $('#entry_details .field .value#entry_value');
   var entryBillOn      = $('#entry_details .field .value#entry_bill_on');
   var entryAutoDebit   = $('#entry_details .field .value#entry_auto_debit');
   var entryStatus      = $('#entry_details .field .value#entry_status');
+
+  entryTitle.editInPlace($.extend(defaultEditInPlaceOptions,{
+    field_type:      'text',
+    url:             '/entries/' + entryId + '/quick_update.js',
+    params:          '_method=put&attribute=title'
+  }));
 
   entryKind.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'select',
