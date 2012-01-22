@@ -130,6 +130,16 @@ feature 'Entries management', %q{
     td.should have_content(I18n.l(Date.tomorrow))
   end
 
+  scenario "Editing a entry's auto debit", :js => true do
+    entry = FactoryGirl.create :entry, :time_frame => @time_frame, :auto_debit => false
+    visit time_frame_path(@time_frame)
+    find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]").click
+    find(:xpath, '//div[@id="entry_auto_debit"]').click
+    select 'Sim', :from => 'inplace_value'
+    click_button 'Salvar'
+    find(:xpath, '//div[@id="entry_auto_debit"]').should have_content('Sim')
+  end
+
   scenario "Editing a entry's status", :js => true do
     entry = FactoryGirl.create :entry, :time_frame => @time_frame, :done => false
     visit time_frame_path(@time_frame)
