@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
 # gem 'capistrano'
-gem 'devise', '>= 1.3.4'
+gem 'devise', '~> 2.0.0'
 gem 'enumerate_it'
 gem 'haml'
 gem 'json'
 gem 'jquery-rails'
 gem 'pg'
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.1'
 gem 'settingslogic'
 gem 'unicorn'
 gem 'will_paginate'
@@ -19,14 +19,14 @@ group :development do
   gem 'ruby-debug'
   gem 'ruby_parser'
   gem 'silent-postgres'
-  gem 'web-app-theme', '~> 0.8.0'
+  gem 'web-app-theme', '~> 0.8.0', :git => 'https://github.com/slainer68/web-app-theme.git'
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'sass-rails',   '~> 3.1.5'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails', '~> 3.2.3'
   gem 'uglifier', '>= 1.0.3'
 end
 

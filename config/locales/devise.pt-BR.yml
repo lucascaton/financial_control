@@ -22,7 +22,9 @@ pt-BR:
       send_instructions: 'Dentro de minutos, receberá um email com as instruções de confirmação da sua conta.'
       confirmed: 'Sua conta foi confirmada com sucesso.'
     registrations:
-      inactive_signed_up: 'Uma confirmação foi enviada para seu email.'
+      signed_up_but_unconfirmed: 'Uma mensagem com um link de confirmação foi enviada para seu e-mail. Por favor, abra o link para ativar sua conta.'
+      signed_up_but_inactive: 'Você se registrou com sucesso. No entanto, sua conta ainda não foi ativada.'
+      signed_up_but_locked: 'Você se registrou com sucesso. No entanto, sua conta está bloqueada.'
       updated: 'Sua conta foi atualizada com sucesso.'
       destroyed: 'Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.'
     mailer:
