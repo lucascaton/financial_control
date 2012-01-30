@@ -11,6 +11,12 @@ feature 'Groups management', %q{
     authenticate_with_admin_email
   end
 
+  scenario 'Visiting groups page when there are no groups' do
+    visit groups_path
+    page.should have_content('Grupos')
+    page.should have_content('Você ainda não criou nenhum grupo.')
+  end
+
   scenario 'Listing all groups' do
     FactoryGirl.create :group, :name => 'Umbrella Corporation'
     FactoryGirl.create :group, :name => 'Tricell Farmaceutica'

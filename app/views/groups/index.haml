@@ -2,20 +2,28 @@
 -content_for :sidebar do
   =render :partial => 'sidebar', :locals => { :links => {} }
 
-%table.table
-  %tr
-    %th.first ID
-    %th=t 'activerecord.attributes.group.name'
-    %th=t 'web-app-theme.created_at'
-    %th=t 'activerecord.attributes.group.users'
-    %th.last &nbsp;
-  -@groups.each do |group|
-    %tr{:class => cycle('odd', 'even')}
-      %td=group.id
-      %td=link_to group.name, group
-      %td=l group.created_at, :format => :short
-      %td=group.users_humanize
-      %td.last=link_to t('web-app-theme.edit'), edit_group_path(group)
+-if @groups.present?
+  %table.table
+    %tr
+      %th.first ID
+      %th=t 'activerecord.attributes.group.name'
+      %th=t 'web-app-theme.created_at'
+      %th=t 'activerecord.attributes.group.users'
+      %th.last &nbsp;
+    -@groups.each do |group|
+      %tr{:class => cycle('odd', 'even')}
+        %td=group.id
+        %td=link_to group.name, group
+        %td=l group.created_at, :format => :short
+        %td=group.users_humanize
+        %td.last=link_to t('web-app-theme.edit'), edit_group_path(group)
 
-.actions-bar.wat-cf
-  .actions
+  .actions-bar.wat-cf
+    .actions
+-else
+  %p
+    %em Você ainda não criou nenhum grupo.
+    %br
+    %strong
+      =link_to 'Crie' , new_group_path
+    um agora!
