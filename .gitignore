@@ -25,9 +25,6 @@
 /public/packages/*
 /public/system/*
 
-# Ignore extract files
-*.ret
-
 # Ignore files from text editor and IDEs
 Session.vim
 *.swo
