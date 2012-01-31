@@ -2,6 +2,7 @@
 %html
   %head
     %title Financial Control
+    =favicon_link_tag 'favicon.ico'
     =stylesheet_link_tag    'application'
     =javascript_include_tag 'application'
     =yield :header
@@ -39,4 +40,4 @@
 
         #footer
           #block
-            %p Copyright &copy; #{Date.today.year} Financial Control
+            %p Copyright &copy; #{Date.today.year} Sotix - Financial Control
