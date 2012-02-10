@@ -31,14 +31,14 @@ defaultEditInPlaceOptions = {
 };
 
 function setupEditInPlaceFields(){
-  var entryId          = $('#entry_details #entry_id').html();
-  var entryTitle       = $('#entry_details h3#entry_title');
-  var entryKind        = $('#entry_details .field .value#entry_kind');
-  var entryDescription = $('#entry_details .field .value#entry_description');
-  var entryValue       = $('#entry_details .field .value#entry_value');
-  var entryBillOn      = $('#entry_details .field .value#entry_bill_on');
-  var entryAutoDebit   = $('#entry_details .field .value#entry_auto_debit');
-  var entryStatus      = $('#entry_details .field .value#entry_status');
+  var entryId          = $('#entry_details #entry_id').html(),
+      entryTitle       = $('#entry_details h3#entry_title'),
+      entryKind        = $('#entry_details .field .value#entry_kind'),
+      entryDescription = $('#entry_details .field .value#entry_description'),
+      entryValue       = $('#entry_details .field .value#entry_value'),
+      entryBillOn      = $('#entry_details .field .value#entry_bill_on'),
+      entryAutoDebit   = $('#entry_details .field .value#entry_auto_debit'),
+      entryStatus      = $('#entry_details .field .value#entry_status');
 
   entryTitle.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'text',
@@ -121,12 +121,12 @@ function configureFormNewEntry(){
     $('#facebox form.form').submit(function(){
       showLoading(true);
 
-      var timeFrameId   = $(this).find('#entry_time_frame_id').val();
-      var kind          = $(this).find('#entry_kind').val();
-      var title         = $(this).find('#entry_title').val();
-      var description   = $(this).find('#entry_description').val();
-      var value         = $(this).find('#entry_value').val();
-      var billOn        = $(this).find('#entry_bill_on_facebox').val();
+      var timeFrameId = $(this).find('#entry_time_frame_id').val(),
+          kind        = $(this).find('#entry_kind').val(),
+          title       = $(this).find('#entry_title').val(),
+          description = $(this).find('#entry_description').val(),
+          value       = $(this).find('#entry_value').val(),
+          billOn      = $(this).find('#entry_bill_on_facebox').val();
 
       $.post('/entries/quick_create', { time_frame_id: timeFrameId, kind: kind, title: title,
         description: description, value: value, bill_on: billOn }, function(data){
