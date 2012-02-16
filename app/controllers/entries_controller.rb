@@ -19,34 +19,8 @@ class EntriesController < ApplicationController
   def quick_update
     entry = Entry.find params[:id]
     attribute = params[:attribute].to_sym
-    update_value = case attribute
-      when :value
-        params[:update_value].gsub(/,/, '.')
-      when :bill_on
-       Date.strptime params[:update_value], '%d/%m/%Y'
-      else
-        params[:update_value]
-      end
+    update_value = params[:update_value]
 
-    if entry.update_attributes attribute => update_value
-      data = case attribute
-        when :kind
-          entry.kind_humanize
-        when :value
-          entry.value.to_currency Currency::BRL
-        when :bill_on
-          I18n.l entry.bill_on
-        when :auto_debit
-          I18n.t entry.auto_debit.to_s
-        when :done
-          EntryStatus.t entry.status
-        else
-          entry.send(attribute)
-        end
-
-      render :json => data
-    else
-      render :json => nil
-    end
+    render :json => entry.quick_update_attribute(attribute, update_value)
   end
 end

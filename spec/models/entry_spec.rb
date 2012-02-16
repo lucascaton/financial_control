@@ -121,12 +121,45 @@ describe Entry do
     end
   end
 
-  describe '.without_record_kind' do
-    DatabaseCleaner.clean
-    entry_1 = FactoryGirl.create :entry
-    entry_2 = FactoryGirl.create :entry, :record_kind => EntryRecordKind.list.first
-    entry_3 = FactoryGirl.create :entry
+  # describe '.without_record_kind' do
+  #   DatabaseCleaner.clean
+  #   entry_1 = FactoryGirl.create :entry
+  #   entry_2 = FactoryGirl.create :entry, :record_kind => EntryRecordKind.list.first
+  #   entry_3 = FactoryGirl.create :entry
 
-    Entry.without_record_kind.should =~ [entry_1, entry_3]
+  #   Entry.without_record_kind.should =~ [entry_1, entry_3]
+  # end
+
+  describe '#quick_update_attribute' do
+    it 'returns kind humanize when update the kind attribute' do
+      entry = FactoryGirl.create :entry, :kind => EntryKind::CREDIT
+      entry.quick_update_attribute(:kind, EntryKind::DEBIT).should == 'Débito (-)'
+    end
+
+    it 'returns formated value when update the value attribute' do
+      entry = FactoryGirl.create :entry, :value => 130
+      entry.quick_update_attribute(:value, '145,33').should == 'R$ 145,33'
+    end
+
+    it 'returns formated bill on when update the bill on attribute' do
+      entry = FactoryGirl.create :entry, :bill_on => Date.today
+      tomorrow = Date.tomorrow.strftime('%d/%m/%Y')
+      entry.quick_update_attribute(:bill_on, tomorrow).should == tomorrow
+    end
+
+    it 'returns auto debit humanize when update the auto debit attribute' do
+      entry = FactoryGirl.create :entry, :auto_debit => true
+      entry.quick_update_attribute(:auto_debit, 'false').should == 'Não'
+    end
+
+    it 'returns status humanize when update the done attribute' do
+      entry = FactoryGirl.create :entry, :done => false
+      entry.quick_update_attribute(:done, 'true').should == 'Pago'
+    end
+
+    it 'returns XXX when update the YYY attribute' do
+      entry = FactoryGirl.create :entry, :title => 'Foo'
+      entry.quick_update_attribute(:title, 'Bar').should == 'Bar'
+    end
   end
 end

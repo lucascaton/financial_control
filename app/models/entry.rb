@@ -33,7 +33,7 @@ class Entry < ActiveRecord::Base
   has_enumeration_for :record_kind, :with => EntryRecordKind, :create_helpers => true
 
   scope :active, where(:deleted_at => nil)
-  scope :without_record_kind, where(:record_kind => nil)
+  # scope :without_record_kind, where(:record_kind => nil)
 
   def status
     if done?
@@ -55,11 +55,34 @@ class Entry < ActiveRecord::Base
     update_attribute :deleted_at, Time.now if destroyable?
   end
 
+  def quick_update_attribute(attribute, update_value)
+    prepared_update_value = prepare_update_value(attribute, update_value)
+
+    if update_attributes(attribute => prepared_update_value)
+      case attribute
+        when :kind       then kind_humanize
+        when :value      then value.to_currency Currency::BRL
+        when :bill_on    then I18n.l bill_on
+        when :auto_debit then I18n.t auto_debit.to_s
+        when :done       then EntryStatus.t status
+        else send(attribute)
+      end
+    end
+  end
+
   private
   def validate_time_frame_period
     return if bill_on.nil?
     unless bill_on.between? time_frame.start_on, time_frame.end_on
       errors.add :bill_on, :bill_on_invalid_with_this_time_frame
+    end
+  end
+
+  def prepare_update_value(attribute, update_value)
+    case attribute
+      when :value   then update_value.gsub(/,/, '.')
+      when :bill_on then Date.strptime(update_value, '%d/%m/%Y')
+      else update_value
     end
   end
 end
