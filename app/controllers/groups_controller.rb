@@ -1,12 +1,12 @@
 class GroupsController < ApplicationController
   before_filter :ensure_admin_user
+  before_filter :load_group, :only => [:show, :edit, :update, :add_user, :remove_user, :time_frames, :add_time_frame, :remove_time_frame]
 
   def index
     @groups = Group.all
   end
 
   def show
-    @group = Group.find params[:id]
     @users_to_add_to_group = (User.active - @group.users).sort_by &:name
     flash.now[:error] = 'Nenhum usuário cadastrado neste grupo.' if @group.users.empty?
   end
@@ -22,22 +22,19 @@ class GroupsController < ApplicationController
       flash[:notice] = 'Grupo criado com sucesso.'
       redirect_to @group
     else
-      render :action => 'new'
+      render :new
     end
   end
 
   def edit
-    @group = Group.find params[:id]
   end
 
   def update
-    @group = Group.find params[:id]
-
     if @group.update_attributes params[:group]
       flash[:notice] = 'Grupo atualizado com sucesso.'
       redirect_to @group
     else
-      render :action => 'edit'
+      render :edit
     end
   end
 
@@ -51,7 +48,6 @@ class GroupsController < ApplicationController
   end
 
   def remove_user
-    @group = Group.find params[:id]
     user = User.find params[:user_id]
     @group.users.delete user
 
@@ -60,7 +56,6 @@ class GroupsController < ApplicationController
   end
 
   def time_frames
-    @group = Group.find params[:id]
     @time_frames = @group.time_frames
 
     if @time_frames.empty?
@@ -71,7 +66,6 @@ class GroupsController < ApplicationController
   end
 
   def add_time_frame
-    @group = Group.find params[:id]
     start_on = Date.civil params[:add_time_frame]['period(1i)'].to_i, params[:add_time_frame]['period(2i)'].to_i, 1
     end_on = start_on.end_of_month
 
@@ -86,7 +80,6 @@ class GroupsController < ApplicationController
   end
 
   def remove_time_frame
-    @group = Group.find params[:id]
     time_frame = TimeFrame.find params[:time_frame_id]
 
     if time_frame.destroyable? && time_frame.destroy
@@ -96,5 +89,10 @@ class GroupsController < ApplicationController
     end
 
     redirect_to time_frames_group_path(@group)
+  end
+
+  private
+  def load_group
+    @group = Group.find params[:id]
   end
 end
