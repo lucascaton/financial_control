@@ -80,4 +80,25 @@ describe Group do
       group.last_5_time_frames =~ [time_frame_1, time_frame_2, time_frame_3, time_frame_4, time_frame_5]
     end
   end
+
+  describe '#time_frame_errors' do
+    it "returns 'time frame empty' message" do
+      group = FactoryGirl.create :group
+      group.time_frame_errors.should == 'Nenhum período cadastrado neste grupo.'
+    end
+
+    it "returns 'no current time frame' message" do
+      group = FactoryGirl.create :group
+      time_frame = FactoryGirl.create :time_frame, :group_id => group.id,
+        :start_on => 2.month.ago.beginning_of_month.to_date, :end_on => 2.month.ago.end_of_month.to_date
+      group.time_frame_errors.should == 'Nenhum período ativo neste grupo.'
+    end
+
+    it 'returns no message' do
+      group = FactoryGirl.create :group
+      time_frame = FactoryGirl.create :time_frame, :group_id => group.id,
+        :start_on => Date.today.beginning_of_month, :end_on => Date.today.end_of_month
+      group.time_frame_errors.should be_nil
+    end
+  end
 end

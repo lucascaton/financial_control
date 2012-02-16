@@ -28,4 +28,12 @@ class Group < ActiveRecord::Base
   def last_5_time_frames
     time_frames.order('start_on').limit(5)
   end
+
+  def time_frame_errors
+    if time_frames.empty?
+      'Nenhum período cadastrado neste grupo.'
+    elsif !current_time_frame
+      'Nenhum período ativo neste grupo.'
+    end
+  end
 end

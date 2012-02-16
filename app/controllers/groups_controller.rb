@@ -57,12 +57,7 @@ class GroupsController < ApplicationController
 
   def time_frames
     @time_frames = @group.time_frames
-
-    if @time_frames.empty?
-      flash.now[:error] = 'Nenhum período cadastrado neste grupo.'
-    else
-      flash.now[:error] = 'Nenhum período ativo neste grupo.' unless @group.current_time_frame
-    end
+    flash.now[:error] = @group.time_frame_errors if @group.time_frame_errors
   end
 
   def add_time_frame
