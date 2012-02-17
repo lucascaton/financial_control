@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120119020913) do
+ActiveRecord::Schema.define(:version => 20120217144622) do
 
   create_table "entries", :force => true do |t|
     t.integer  "time_frame_id",                     :null => false
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(:version => 20120119020913) do
     t.string   "record_kind"
   end
 
+  add_index "entries", ["credit_card_id"], :name => "index_entries_on_credit_card_id"
+  add_index "entries", ["time_frame_id"], :name => "index_entries_on_time_frame_id"
+
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -41,6 +44,9 @@ ActiveRecord::Schema.define(:version => 20120119020913) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
+  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
+
   create_table "time_frames", :force => true do |t|
     t.integer  "group_id"
     t.date     "start_on"
@@ -48,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20120119020913) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "time_frames", ["group_id"], :name => "index_time_frames_on_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
