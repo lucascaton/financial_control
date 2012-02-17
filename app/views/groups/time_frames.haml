@@ -1,7 +1,7 @@
 -content_for :block_title, "Grupo '#{@group.name}' - períodos cadastrados"
 -content_for :sidebar do
-  =render :partial => 'sidebar', :locals => { :links => { 'Editar grupo' => edit_group_path(@group),
-    'Incluir ou remover usuários deste grupo' => @group }}
+  =render 'sidebar', :links => { 'Editar grupo' => edit_group_path(@group),
+    'Incluir ou remover usuários deste grupo' => @group }
 
 -if @time_frames.present?
   %h3 Períodos:

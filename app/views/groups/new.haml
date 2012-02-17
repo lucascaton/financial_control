@@ -1,5 +1,5 @@
 -content_for :block_title, 'Novo grupo'
 -content_for :sidebar do
-  =render :partial => 'sidebar', :locals => { :links => {} }
+  =render 'sidebar', :links => {}
 
-=render :partial => 'form'
+=render 'form'

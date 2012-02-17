@@ -1,6 +1,6 @@
 -content_for :block_title, 'Grupos'
 -content_for :sidebar do
-  =render :partial => 'sidebar', :locals => { :links => {} }
+  =render 'sidebar', :links => {}
 
 -if @groups.present?
   %table.table

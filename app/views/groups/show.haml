@@ -1,7 +1,7 @@
 -content_for :block_title, "Grupo '#{@group.name}'"
 -content_for :sidebar do
-  =render :partial => 'sidebar', :locals => { :links => { 'Editar grupo' => edit_group_path,
-    'Períodos cadastrados' => time_frames_group_path }}
+  =render 'sidebar', :links => { 'Editar grupo' => edit_group_path,
+    'Períodos cadastrados' => time_frames_group_path }
 
 -if @group.users.present?
   %h3 Usuários:

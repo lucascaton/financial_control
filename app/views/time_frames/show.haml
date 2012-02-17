@@ -1,11 +1,11 @@
 -content_for :block_title, "Grupo \"#{@time_frame.group.name}\" - Período de #{@time_frame.period}"
 -content_for :sidebar do
-  =render :partial => 'sidebar'
+  =render 'sidebar'
 -content_for :header do
   =javascript_include_tag 'app/time_frames/show'
 
 =hidden_field_tag :time_frame_id, @time_frame.id
-#entries=render :partial => 'entries', :locals => { :entries => @entries }
+#entries=render 'entries', :entries => @entries
 
 -# -if @entries_logs.present? || true
 -#   %table.table#hitory
