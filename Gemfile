@@ -19,7 +19,7 @@ group :development do
   gem 'ruby-debug'
   gem 'ruby_parser'
   gem 'silent-postgres'
-  gem 'web-app-theme', '~> 0.8.0', :git => 'https://github.com/slainer68/web-app-theme.git'
+  # gem 'web-app-theme', '~> 0.8.0', :git => 'https://github.com/slainer68/web-app-theme.git'
 end
 
 # Gems used only for assets and not required
