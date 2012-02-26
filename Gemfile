@@ -16,7 +16,7 @@ group :development do
   gem 'annotate', '2.4.1.beta1'
   # gem 'bullet'
   gem 'hpricot'
-  gem 'ruby-debug'
+  gem 'ruby-debug19'
   gem 'ruby_parser'
   gem 'silent-postgres'
   # gem 'web-app-theme', '~> 0.8.0', :git => 'https://github.com/slainer68/web-app-theme.git'
