@@ -2,8 +2,8 @@
 %html
   %head
     %title Financial Control
-    =favicon_link_tag 'favicon.ico'
-    =stylesheet_link_tag    'application'
+    =favicon_link_tag '/favicon.ico'
+    =stylesheet_link_tag 'application', :media => 'all'
     =javascript_include_tag 'application'
     =yield :header
     =csrf_meta_tags
@@ -13,7 +13,7 @@
         #loading
           =image_tag 'icons/ajax-loader.gif'
           Carregando...
-        %h1=link_to 'Financial Control', root_path
+        %h1#logo=link_to 'Financial Control', root_path
         #main-navigation
           =render :partial => 'layouts/menu'
         -if current_user
