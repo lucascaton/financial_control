@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'spec_helper'
 
 Capybara.javascript_driver = :selenium

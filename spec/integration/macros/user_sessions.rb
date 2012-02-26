@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module IntegrationHelpers
   def create_or_find_a_simple_user
     user = User.find_by_email 'stephenking@example.com'

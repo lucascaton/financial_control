@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module FasterTests
   def scrub_instance_variables
     reserved_ivars = %w(@loaded_fixtures @test_passed @fixture_cache @method_name @_assertion_wrapped @_result)

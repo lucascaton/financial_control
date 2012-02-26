@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'integration_helper'
 
 feature 'Entries management', %q{

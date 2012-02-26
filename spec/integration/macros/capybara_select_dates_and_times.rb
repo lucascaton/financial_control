@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Module created by szimek (https://gist.github.com/szimek)
 # And adapted by Lucas Catón
 # Source: https://gist.github.com/934886

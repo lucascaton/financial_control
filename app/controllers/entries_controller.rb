@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class EntriesController < ApplicationController
   def show
     @entry = Entry.find params[:id]

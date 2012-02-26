@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class TimeFramesController < ApplicationController
   before_filter :load_time_frame_and_entries
 
