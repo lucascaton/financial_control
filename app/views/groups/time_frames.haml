@@ -29,7 +29,8 @@
   .group
     =f.label :period, 'Adicionar período', :class => :label
     =f.date_select :period, :discard_day => true, :start_year => (Date.today.year - 1),
-      :default => @group.time_frames.present? ? @group.time_frames.last.start_on.next_month : nil
+      :default => @group.time_frames.present? ? @group.time_frames.last.start_on.next_month : nil,
+      :order => [:month, :year]
 
   .group.navform.wat-cf
     %button.button{:type => 'submit'}
