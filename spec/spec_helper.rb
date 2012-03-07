@@ -37,7 +37,7 @@ RSpec.configure do |config|
 
   config.include CustomModelMatchers, :type => :model
   config.include FasterTests
-  config.before(:all) { scrub_instance_variables }
+  config.after(:each) { scrub_instance_variables }
 
   config.include IntegrationHelpers, :type => :request if defined? IntegrationHelpers
 
