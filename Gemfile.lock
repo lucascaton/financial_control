@@ -157,6 +157,10 @@ GEM
     sexp_processor (3.1.0)
     shoulda-matchers (1.0.0)
     silent-postgres (0.1.1)
+    simplecov (0.6.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.5.3)
+    simplecov-html (0.5.3)
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -205,6 +209,7 @@ DEPENDENCIES
   settingslogic
   shoulda-matchers
   silent-postgres
+  simplecov
   uglifier (>= 1.0.3)
   unicorn
   will_paginate

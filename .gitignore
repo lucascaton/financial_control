@@ -48,3 +48,6 @@ Session.vim
 
 # Ignore routes cache
 /.routes
+
+# Ignore simplecov files
+coverage/
