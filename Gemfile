@@ -15,6 +15,7 @@ gem 'will_paginate'
 group :development do
   gem 'annotate', '2.4.1.beta1'
   # gem 'bullet'
+  gem 'guard-livereload'
   gem 'hpricot'
   gem 'ruby-debug19'
   gem 'ruby_parser'
