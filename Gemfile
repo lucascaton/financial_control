@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'awesome_print'
 # gem 'capistrano'
 gem 'devise', '~> 2.0.0'
 gem 'enumerate_it'
@@ -32,6 +33,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails'
 end
 
