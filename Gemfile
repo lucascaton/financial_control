@@ -18,6 +18,7 @@ group :development do
   # gem 'bullet'
   gem 'guard-livereload'
   gem 'hpricot'
+  gem 'lol_dba'
   gem 'ruby-debug19'
   gem 'ruby_parser'
   gem 'silent-postgres'

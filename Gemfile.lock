@@ -95,6 +95,10 @@ GEM
     kgio (2.7.2)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
+    lol_dba (1.2.1)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      railties (>= 3.0)
     mail (2.4.1)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -222,6 +226,7 @@ DEPENDENCIES
   hpricot
   jquery-rails
   json
+  lol_dba
   pg
   pry
   rails (= 3.2.2)
