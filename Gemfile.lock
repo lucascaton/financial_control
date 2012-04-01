@@ -179,7 +179,6 @@ GEM
     settingslogic (2.0.8)
     sexp_processor (3.1.0)
     shoulda-matchers (1.0.0)
-    silent-postgres (0.1.1)
     simplecov (0.6.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.5.3)
@@ -236,7 +235,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   settingslogic
   shoulda-matchers
-  silent-postgres
   simplecov
   uglifier (>= 1.0.3)
   unicorn

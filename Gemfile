@@ -21,7 +21,6 @@ group :development do
   gem 'lol_dba'
   gem 'ruby-debug19'
   gem 'ruby_parser'
-  gem 'silent-postgres'
   # gem 'web-app-theme', '~> 0.8.0', :git => 'https://github.com/slainer68/web-app-theme.git'
 end
 
