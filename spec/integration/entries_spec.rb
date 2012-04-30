@@ -120,16 +120,16 @@ feature 'Entries management', %q{
     td.should have_content('R$ 1.200,00')
   end
 
-  scenario "Editing a entry's bill_on", :js => true do
-    entry = FactoryGirl.create :entry, :time_frame => @time_frame, :bill_on => Date.today
+  scenario "Editing a entry's bill_on", js: true do
+    entry = FactoryGirl.create :entry, time_frame: @time_frame, bill_on: Date.today.end_of_month - 1.day
     visit time_frame_path(@time_frame)
     find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]").click
     find(:xpath, '//div[@id="entry_bill_on"]').click
-    fill_in 'inplace_value', :with => I18n.l(Date.tomorrow)
+    fill_in 'inplace_value', :with => I18n.l(Date.today.end_of_month - 1.day)
     click_button 'Salvar'
-    find(:xpath, '//div[@id="entry_bill_on"]').should have_content(I18n.l(Date.tomorrow))
+    find(:xpath, '//div[@id="entry_bill_on"]').should have_content(I18n.l(Date.today.end_of_month - 1.day))
     td = find(:xpath, "//table/tbody/tr[@id=\"entry_#{entry.id}\"]/td[@id=\"td_entry_bill_on\"]")
-    td.should have_content(I18n.l(Date.tomorrow))
+    td.should have_content(I18n.l(Date.today.end_of_month - 1.day))
   end
 
   scenario "Editing a entry's auto debit", :js => true do

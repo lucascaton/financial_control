@@ -143,9 +143,9 @@ describe Entry do
     end
 
     it 'returns formated bill on when update the bill on attribute' do
-      entry = FactoryGirl.create :entry, :bill_on => Date.today
-      tomorrow = Date.tomorrow.strftime('%d/%m/%Y')
-      entry.quick_update_attribute(:bill_on, tomorrow).should == tomorrow
+      entry = FactoryGirl.create :entry, :bill_on => Date.today.end_of_month
+      previous_day = (Date.today.end_of_day - 1.day).strftime('%d/%m/%Y')
+      entry.quick_update_attribute(:bill_on, previous_day).should == previous_day
     end
 
     it 'returns auto debit humanize when update the auto debit attribute' do
