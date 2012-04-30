@@ -29,6 +29,7 @@
 Session.vim
 *.swo
 *.swp
+*.swn
 
 # Ignore files from Operating System
 *~
