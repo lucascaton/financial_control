@@ -144,7 +144,7 @@ describe Entry do
 
     it 'returns formated bill on when update the bill on attribute' do
       entry = FactoryGirl.create :entry, :bill_on => Date.today.end_of_month
-      previous_day = (Date.today.end_of_day - 1.day).strftime('%d/%m/%Y')
+      previous_day = (Date.today.end_of_month - 1.day).strftime('%d/%m/%Y')
       entry.quick_update_attribute(:bill_on, previous_day).should == previous_day
     end
 
