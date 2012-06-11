@@ -28,7 +28,7 @@ namespace :db do
       system 'stty echo'
       puts
 
-      user = User.new(user_attributes)
+      user = User.new(user_attributes.merge(admin: true))
 
       if user.save
         puts "\nUser was successfully created!"
