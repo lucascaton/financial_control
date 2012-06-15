@@ -66,13 +66,12 @@ feature 'Groups management', %q{
     page.has_no_xpath? "//option[contains(string(), 'Samwise')]"
   end
 
-  scenario 'Removing a user from a group', :js => true do
+  scenario 'Removing a user from a group' do
     user = FactoryGirl.create :user, :name => 'Saruman', :email => 'saruman@example.com'
     group = FactoryGirl.create :group, :name => 'Home Finances'
     group.users << user
     visit "/groups/#{group.id}"
     click_link("remove_user_#{user.id}")
-    page.driver.browser.switch_to.alert.accept
     page.should have_content('Usuário "Saruman" removido com sucesso deste grupo.')
   end
 end

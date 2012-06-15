@@ -50,11 +50,10 @@ feature 'Time frame management', %q{
     page.should have_content('Não foi possível adicionar esse período.')
   end
 
-  scenario 'Removing a time frame from a group', :js => true do
+  scenario 'Removing a time frame from a group' do
     time_frame = FactoryGirl.create :time_frame, :group => @group
     visit "/groups/#{@group.id}/time_frames"
     click_link("remove_time_frame_#{time_frame.id}")
-    page.driver.browser.switch_to.alert.accept
     page.should have_content('Período removido com sucesso.')
   end
 

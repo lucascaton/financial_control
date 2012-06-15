@@ -17,7 +17,6 @@ group :development do
   gem 'guard-livereload'
   gem 'hpricot'
   gem 'lol_dba'
-  gem 'ruby-debug19'
   gem 'ruby_parser'
 end
 
@@ -37,6 +36,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'forgery'
-  gem 'simplecov', :require => false
+  gem 'poltergeist'
   gem 'shoulda-matchers'
+  gem 'simplecov', :require => false
 end
