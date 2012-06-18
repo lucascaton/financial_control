@@ -23,7 +23,7 @@
         %td=t user.admin.to_s
         %td=t user.active.to_s
         %td=link_to 'Remover desse grupo', remove_user_from_group_path(@group, :user_id => user.id),
-          :id => "remove_user_#{user.id}", :method => :delete, :confirm => 'Você tem certeza?'
+          id: "remove_user_#{user.id}", method: :delete, data: { confirm: 'Você tem certeza?' }
 
 .actions-bar.wat-cf
   .actions

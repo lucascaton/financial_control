@@ -18,7 +18,7 @@
         %td=link_to "<strong>#{pluralize(time_frame.entries.count, 'entrada')}</strong>".html_safe, time_frame
         -if time_frame.destroyable?
           %td=link_to 'Remover período', remove_time_frame_from_group_path(@group, :time_frame_id => time_frame.id),
-            :id => "remove_time_frame_#{time_frame.id}", :method => :delete, :confirm => 'Você tem certeza?'
+            :id => "remove_time_frame_#{time_frame.id}", method: :delete, data: { confirm: 'Você tem certeza?' }
         -else
           %td &nbsp;
 
