@@ -30,6 +30,14 @@ describe Group do
       group.users_humanize.should == ''
     end
 
+    it 'returns just one user' do
+      group = FactoryGirl.create :group
+      user = FactoryGirl.create :user, :name => 'Trinity'
+      FactoryGirl.create :membership, :group => group, :user => user
+
+      group.users_humanize.should == 'Trinity'
+    end
+
     it 'returns two users' do
       group = FactoryGirl.create :group
       user_1 = FactoryGirl.create :user, :name => 'Neo'
