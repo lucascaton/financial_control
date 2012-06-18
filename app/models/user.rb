@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
 
   scope :active, where(:active => true)
 
+  # Verify the active attribute in Devise authentication
   def self.find_for_database_authentication(conditions)
     email = conditions.delete(:email)
     where(conditions).where(['active = true AND email = :value', { :value => email }]).first
