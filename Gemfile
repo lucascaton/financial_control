@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'awesome_print'
-gem 'devise', '~> 2.0.0'
+gem 'devise'
 gem 'enumerate_it'
 gem 'haml'
 gem 'json'
