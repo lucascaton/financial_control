@@ -27,8 +27,14 @@ FinancialControl::Application.routes.draw do
     end
   end
 
-  devise_for :users, :controllers => { :registrations => 'users', :sessions => 'sessions' } do
-    get 'users/sign_out' => 'sessions#destroy', :as => :destroy_user_session
+  devise_for :users, controllers: {
+    registrations: 'users',
+    sessions: 'sessions'
+  }
+
+  devise_scope :user do
+    get 'users/sign_out' => 'sessions#destroy', as: :destroy_user_session
   end
+
   resources :users, :except => [:destroy, :show]
 end
