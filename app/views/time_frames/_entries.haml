@@ -1,4 +1,4 @@
--if @entries.present?
+-if entries.present?
   %table.table#entries_table
     %thead
       %tr
@@ -9,7 +9,7 @@
         %th.short=t 'activerecord.attributes.entry.status'
         %th.last=t 'activerecord.attributes.entry.description'
     %tbody
-      -@entries.each do |entry|
+      -entries.each do |entry|
         %tr{:class => cycle('odd', 'even'), :id => "entry_#{entry.id}"}
           %td#td_entry_bill_on.short=entry.bill_on ? l(entry.bill_on) : '-'
           %td#td_entry_title=entry.title

@@ -3,4 +3,4 @@
   =render 'sidebar', :links => { 'Incluir ou remover usuários deste grupo' => @group,
     'Períodos cadastrados' => time_frames_group_path }
 
-=render 'form'
+=render 'form', group: @group
