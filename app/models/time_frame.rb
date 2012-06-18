@@ -12,6 +12,8 @@
 #
 
 class TimeFrame < ActiveRecord::Base
+  attr_accessible :group_id, :start_on, :end_on
+
   validates_presence_of :group_id, :start_on, :end_on
   validate :ensure_end_on_is_after_start_on
   validate :validate_overlaps
