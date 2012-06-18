@@ -20,6 +20,8 @@ class TimeFrame < ActiveRecord::Base
 
   has_many :entries, :dependent => :destroy
 
+  delegate :name, to: :group, prefix: true
+
   def destroyable?
     # For now, every time_frame is destroyable
     true
