@@ -17,7 +17,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/mocks'
-require 'custom_matchers'
+# require 'custom_matchers'
 require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -35,11 +35,11 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
-  config.include CustomModelMatchers, :type => :model
+  # config.include CustomModelMatchers, :type => :model
   config.include FasterTests
   config.after(:each) { scrub_instance_variables }
 
-  config.include IntegrationHelpers, :type => :request if defined? IntegrationHelpers
+  config.include IntegrationHelpers, :type => :request
 
   config.before :each do
     Capybara.reset_sessions!
