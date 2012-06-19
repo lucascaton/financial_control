@@ -4,12 +4,12 @@
 %table.table
   %tr
     %th.first ID
-    %th=t 'activerecord.attributes.user.name'
-    %th=t 'activerecord.attributes.user.email'
+    %th=User.human_attribute_name :name
+    %th=User.human_attribute_name :email
     %th=t 'web-app-theme.created_at'
-    %th=t 'activerecord.attributes.user.admin'
-    %th=t 'activerecord.attributes.user.active'
-    %th=t 'activerecord.attributes.user.groups'
+    %th=User.human_attribute_name :admin
+    %th=User.human_attribute_name :active
+    %th=User.human_attribute_name :groups
     %th.last &nbsp;
   -@users.each do |user|
     %tr{:class => cycle('odd', 'even')}

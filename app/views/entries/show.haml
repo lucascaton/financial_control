@@ -2,28 +2,28 @@
 #entry_id.invisible=@entry.id
 
 .field
-  .label=t 'activerecord.attributes.entry.kind'
+  .label=Entry.human_attribute_name :kind
   .value#entry_kind=@entry.kind_humanize
 .field
-  .label=t 'activerecord.attributes.entry.description'
+  .label=Entry.human_attribute_name :description
   .value#entry_description=@entry.description ? @entry.description : '(Sem descrição)'
 .field
-  .label=t 'activerecord.attributes.entry.value'
+  .label=Entry.human_attribute_name :value
   .value#entry_value=number_to_currency @entry.value
 .field
-  .label=t 'activerecord.attributes.entry.bill_on'
+  .label=Entry.human_attribute_name :bill_on
   .value#entry_bill_on=@entry.bill_on ? l(@entry.bill_on) : '(Data não definida)'
 .field
-  .label=t 'activerecord.attributes.entry.auto_debit'
+  .label=Entry.human_attribute_name :auto_debit
   .value#entry_auto_debit=t @entry.auto_debit.to_s
 .field
-  .label=t 'activerecord.attributes.entry.status'
+  .label=Entry.human_attribute_name :status
   .value#entry_status
     =image_tag("icons/#{@entry.status}.png")
     =EntryStatus.t @entry.status
 .field
-  .label=t 'activerecord.attributes.entry.created_at'
+  .label=Entry.human_attribute_name :created_at
   .value=l @entry.created_at
 .field
-  .label=t 'activerecord.attributes.entry.updated_at'
+  .label=Entry.human_attribute_name :updated_at
   .value=l @entry.updated_at

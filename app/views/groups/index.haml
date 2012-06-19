@@ -6,9 +6,9 @@
   %table.table
     %tr
       %th.first ID
-      %th=t 'activerecord.attributes.group.name'
+      %th=Group.human_attribute_name :name
       %th=t 'web-app-theme.created_at'
-      %th=t 'activerecord.attributes.group.users'
+      %th=Group.human_attribute_name :users
       %th.last &nbsp;
     -@groups.each do |group|
       %tr{:class => cycle('odd', 'even')}

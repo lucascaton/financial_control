@@ -46,6 +46,9 @@ pt-BR:
       user:
         one: 'Usuário'
         many: 'Usuários'
+      entry:
+        one: 'Entrada'
+        many: 'Entradas'
 
     attributes:
       entry:

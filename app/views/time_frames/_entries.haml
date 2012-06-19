@@ -2,12 +2,12 @@
   %table.table#entries_table
     %thead
       %tr
-        %th.short=t 'activerecord.attributes.entry.bill_on'
-        %th=t 'activerecord.attributes.entry.title'
+        %th.short=Entry.human_attribute_name :bill_on
+        %th=Entry.human_attribute_name :title
         %th.short -
         %th.short +
-        %th.short=t 'activerecord.attributes.entry.status'
-        %th.last=t 'activerecord.attributes.entry.description'
+        %th.short=Entry.human_attribute_name :status
+        %th.last=Entry.human_attribute_name :description
     %tbody
       -entries.each do |entry|
         %tr{:class => cycle('odd', 'even'), :id => "entry_#{entry.id}"}

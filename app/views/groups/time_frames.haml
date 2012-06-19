@@ -7,9 +7,9 @@
   %h3 Períodos:
   %table.table
     %tr
-      %th=t 'activerecord.attributes.time_frame.start_on'
-      %th=t 'activerecord.attributes.time_frame.end_on'
-      %th Entradas
+      %th=TimeFrame.human_attribute_name :start_on
+      %th=TimeFrame.human_attribute_name :end_on
+      %th=Entry.model_name.human.pluralize
       %th.last &nbsp;
     -@time_frames.each do |time_frame|
       %tr{:class => cycle('odd', 'even')}
