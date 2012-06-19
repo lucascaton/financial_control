@@ -20,6 +20,8 @@
 #
 
 class Entry < ActiveRecord::Base
+  include EnumerateIt
+
   attr_accessible :time_frame_id, :kind, :title, :description, :value, :bill_on, :auto_debit, :done
 
   validates_presence_of :time_frame_id, :kind, :title, :value
