@@ -29,7 +29,6 @@ end
 
 group :development, :test do
   gem 'pry'
-  gem 'rspec-rails'
 end
 
 group :test do
@@ -38,6 +37,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'forgery'
   gem 'poltergeist'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'simplecov', :require => false
 end
