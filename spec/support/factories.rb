@@ -2,6 +2,7 @@
 
 require 'factory_girl'
 require 'forgery'
+require 'active_support/all' # TODO: improve it
 
 FactoryGirl.define do
   factory :entry do

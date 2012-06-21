@@ -19,7 +19,8 @@
 #  record_kind    :string(255)
 #
 
-require 'spec_helper'
+require 'model_test'
+require 'activesupport/lib/active_support/core_ext/numeric/conversions'
 
 describe Entry do
   it 'has a valid factory' do
