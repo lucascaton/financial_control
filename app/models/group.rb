@@ -21,7 +21,7 @@ class Group < ActiveRecord::Base
   validates_uniqueness_of :name
 
   def users_humanize
-    users.map(&:name).join(', ')
+    users.map(&:name).sort.join(', ')
   end
 
   def current_time_frame

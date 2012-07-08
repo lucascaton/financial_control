@@ -38,6 +38,5 @@ group :test do
   gem 'forgery'
   gem 'poltergeist'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
   gem 'simplecov', :require => false
 end

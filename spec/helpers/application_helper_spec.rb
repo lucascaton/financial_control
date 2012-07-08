@@ -1,9 +1,9 @@
 # encoding: utf-8
-
-require 'spec_helper' # TODO: Remove this line and uncomment the next require!
-# require 'unit_test'
+require 'unit_tests_helper'
 
 describe ApplicationHelper do
+  include ApplicationHelper
+
   describe '#select_for_users' do
     it 'returns a array ready for select tag' do
       user_1 = mock id: 1, name: 'Neo', email: 'neo@example.com'

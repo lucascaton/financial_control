@@ -1,6 +1,5 @@
 # encoding: utf-8
-
-require 'integration_helper'
+require 'integration_tests_helper'
 
 feature 'Users sessions', %q{
   In order to use the application and close my session

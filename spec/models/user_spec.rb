@@ -21,21 +21,7 @@
 #  active                 :boolean         default(TRUE)
 #
 
-require 'spec_helper'
+require 'models_tests_helper'
 
 describe User do
-  it 'has a valid factory' do
-    FactoryGirl.build(:user).should be_valid
-  end
-
-  it { should have_many(:memberships) }
-  it { should have_many(:groups).through(:memberships) }
-
-  it { should validate_presence_of :name }
-
-  [true, false].each { |value| it { should allow_value(value).for(:admin) }}
-  ['', nil].each { |wrong_value| it { should_not allow_value(wrong_value).for(:admin) }}
-
-  [true, false].each { |value| it { should allow_value(value).for(:active) }}
-  ['', nil].each { |wrong_value| it { should_not allow_value(wrong_value).for(:active) }}
 end

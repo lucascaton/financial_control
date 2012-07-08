@@ -1,6 +1,5 @@
 # encoding: utf-8
-
-require 'integration_helper'
+require 'integration_tests_helper'
 
 feature 'Entries management', %q{
   In order to create and edit entries

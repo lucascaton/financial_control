@@ -1,6 +1,5 @@
 # encoding: utf-8
-
-require 'integration_helper'
+require 'integration_tests_helper'
 
 feature 'Pages', %q{
   In order to see the static pages

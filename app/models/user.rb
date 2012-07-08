@@ -35,14 +35,14 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  validates_inclusion_of :admin, :in => [true, false]
-  validates_inclusion_of :active, :in => [true, false]
+  validates_inclusion_of :admin, in: [true, false]
+  validates_inclusion_of :active, in: [true, false]
 
   scope :active, where(:active => true)
 
   # Verify the active attribute in Devise authentication
   def self.find_for_database_authentication(conditions)
     email = conditions.delete(:email)
-    where(conditions).where(['active = true AND email = :value', { :value => email }]).first
+    where(conditions).where(['active = true AND email = :value', { value: email }]).first
   end
 end

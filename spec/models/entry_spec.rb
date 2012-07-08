@@ -19,34 +19,10 @@
 #  record_kind    :string(255)
 #
 
-require 'model_test'
-require 'activesupport/lib/active_support/core_ext/numeric/conversions'
+require 'models_tests_helper'
+require 'lib/extensions/currency'
 
 describe Entry do
-  it 'has a valid factory' do
-    FactoryGirl.build(:entry).should be_valid
-  end
-
-  it { should validate_presence_of :time_frame_id }
-  it { should validate_presence_of :kind }
-  it { should validate_presence_of :title }
-  it { should validate_presence_of :value }
-
-  it { should_not allow_value(nil).for(:auto_debit) }
-  [true, false].each { |auto_debit| it { should allow_value(auto_debit).for(:auto_debit) }}
-
-  it { should_not allow_value(nil).for(:done) }
-  [true, false].each { |done| it { should allow_value(done).for(:done) }}
-
-  [nil, 'other'].each { |kind| it { should_not allow_value(kind).for(:kind) }}
-  EntryKind.list.each { |kind| it { should allow_value(kind).for(:kind) }}
-
-  it { should_not allow_value('other').for(:record_kind) }
-  [EntryRecordKind.list << nil].flatten.each { |record_kind| it { should allow_value(record_kind).for(:record_kind) }}
-
-  it { should belong_to :time_frame }
-  # it { should belong_to :credit_card }
-
   it 'is invalid if bill_on is not within the time frame' do
     entry = FactoryGirl.build :entry, :bill_on => 1.month.ago.to_date
     entry.should_not be_valid
@@ -124,7 +100,6 @@ describe Entry do
   end
 
   # describe '.without_record_kind' do
-  #   DatabaseCleaner.clean
   #   entry_1 = FactoryGirl.create :entry
   #   entry_2 = FactoryGirl.create :entry, :record_kind => EntryRecordKind.list.first
   #   entry_3 = FactoryGirl.create :entry

@@ -9,24 +9,12 @@
 #  updated_at :datetime
 #
 
-require 'spec_helper'
+require 'models_tests_helper'
 
 describe Group do
-  it 'has a valid factory' do
-    FactoryGirl.build(:group).should be_valid
-  end
-
-  it { should have_many(:memberships) }
-  it { should have_many(:users).through(:memberships) }
-  it { should have_many(:time_frames) }
-
-  it { should validate_presence_of :name }
-
-  it { FactoryGirl.create(:group); should validate_uniqueness_of :name }
-
   describe '#users_humanize' do
     it 'returns a empty string' do
-      group = FactoryGirl.create(:group)
+      group = FactoryGirl.create :group
       group.users_humanize.should == ''
     end
 
@@ -45,7 +33,7 @@ describe Group do
       FactoryGirl.create :membership, :group => group, :user => user_1
       FactoryGirl.create :membership, :group => group, :user => user_2
 
-      group.users_humanize.should == 'Neo, Morpheus'
+      group.users_humanize.should == 'Morpheus, Neo'
     end
   end
 
@@ -55,12 +43,14 @@ describe Group do
     end
 
     it 'returns the current time frame' do
-      time_frame = FactoryGirl.create :time_frame, :start_on => Date.today, :end_on => 1.month.from_now.to_date, :group => @group
+      time_frame = FactoryGirl.create :time_frame, start_on: Date.today,
+        end_on: 1.month.from_now.to_date, group: @group
       @group.current_time_frame == time_frame
     end
 
     it 'returns nil when the last time frame already over' do
-      time_frame = FactoryGirl.create :time_frame, :start_on => 2.month.ago.to_date, :end_on => 1.month.ago.to_date, :group => @group
+      time_frame = FactoryGirl.create :time_frame, start_on: 2.month.ago.to_date,
+        end_on: 1.month.ago.to_date, group: @group
       @group.current_time_frame.should be_nil
     end
 

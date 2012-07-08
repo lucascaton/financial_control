@@ -11,29 +11,20 @@
 #  updated_at :datetime
 #
 
-require 'spec_helper'
+require 'models_tests_helper'
 
 describe TimeFrame do
-  it 'has a valid factory' do
-    FactoryGirl.build(:time_frame).should be_valid
-  end
-
-  it { should validate_presence_of :group_id }
-  it { should validate_presence_of :start_on }
-  it { should validate_presence_of :end_on }
-
-  it { should belong_to :group }
-
-  it { should have_many :entries }
-
   it 'is not valid if end_on is after start_on' do
-    FactoryGirl.build(:time_frame, :start_on => Date.today, :end_on => Date.yesterday).should_not be_valid
+    FactoryGirl.build(:time_frame, start_on: Date.today,
+                      end_on: Date.yesterday).should_not be_valid
   end
 
-  it 'is not valid if there is time frames with same period' do
+  it 'is not valid if there is time frames with same period', focus: true do
     group = FactoryGirl.create :group
-    FactoryGirl.create :time_frame, :group => group, :start_on => 15.days.ago.to_date, :end_on => 15.days.from_now.to_date
-    new_time_frame = FactoryGirl.build :time_frame, :group => group, :start_on => Date.today, :end_on => 1.month.from_now.to_date
+    FactoryGirl.create :time_frame, group: group, start_on: 15.days.ago.to_date,
+      end_on: 15.days.from_now.to_date
+    new_time_frame = FactoryGirl.build :time_frame, group: group,
+      start_on: Date.today, end_on: 1.month.from_now.to_date
     new_time_frame.should_not be_valid
   end
 

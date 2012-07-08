@@ -1,6 +1,5 @@
 # encoding: utf-8
-
-require 'integration_helper'
+require 'integration_tests_helper'
 
 feature 'Access permissions' do
   context 'when I am a admin user' do

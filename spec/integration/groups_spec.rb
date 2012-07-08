@@ -1,6 +1,5 @@
 # encoding: utf-8
-
-require 'integration_helper'
+require 'integration_tests_helper'
 
 feature 'Groups management', %q{
   In order to organize groups
