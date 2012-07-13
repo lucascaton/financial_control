@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
 
   def ensure_admin_user
     unless current_user.admin?
-      redirect_to root_path, :flash => { :error => 'Você não tem permissão para acessar esse recurso.' }
+      redirect_to root_path,
+        flash: { error: 'Você não tem permissão para acessar esse recurso.' }
     end
   end
 end

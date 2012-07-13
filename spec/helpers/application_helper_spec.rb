@@ -5,7 +5,7 @@ describe ApplicationHelper do
   include ApplicationHelper
 
   describe '#select_for_users' do
-    it 'returns a array ready for select tag' do
+    it 'returns a array for select tag' do
       user_1 = mock id: 1, name: 'Neo', email: 'neo@example.com'
       user_2 = mock id: 2, name: 'Morpheus', email: 'morpheus@example.com'
 

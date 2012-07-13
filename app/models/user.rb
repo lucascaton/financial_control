@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
     :remember_me
 
   has_many :memberships
-  has_many :groups, :through => :memberships
+  has_many :groups, through: :memberships
 
   validates_presence_of :name
 

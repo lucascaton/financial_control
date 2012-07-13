@@ -93,7 +93,7 @@ describe Group do
       group.time_frame_errors.should == 'Nenhum período ativo neste grupo.'
     end
 
-    it 'returns no message' do
+    it 'does not return any message' do
       group = FactoryGirl.create :group
       time_frame = FactoryGirl.create :time_frame, :group_id => group.id,
         :start_on => Date.today.beginning_of_month, :end_on => Date.today.end_of_month
