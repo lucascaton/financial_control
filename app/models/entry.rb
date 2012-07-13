@@ -60,10 +60,10 @@ class Entry < ActiveRecord::Base
     update_attribute :deleted_at, Time.now if destroyable?
   end
 
-  def quick_update_attribute(attribute, update_value)
-    prepared_update_value = prepare_update_value(attribute, update_value)
+  def update_attribute(attribute, new_value)
+    prepared_new_value = prepare_new_value(attribute, new_value)
 
-    if update_attributes(attribute => prepared_update_value)
+    if super(attribute, prepared_new_value)
       case attribute
         when :kind       then kind_humanize
         when :value      then value.to_currency Currency::BRL
@@ -83,11 +83,11 @@ class Entry < ActiveRecord::Base
     end
   end
 
-  def prepare_update_value(attribute, update_value)
+  def prepare_new_value(attribute, new_value)
     case attribute
-      when :value   then update_value.gsub(/,/, '.')
-      when :bill_on then Date.strptime(update_value, '%d/%m/%Y')
-      else update_value
+      when :value   then new_value.gsub(/,/, '.')
+      when :bill_on then Date.strptime(new_value, '%d/%m/%Y')
+      else new_value
     end
   end
 end

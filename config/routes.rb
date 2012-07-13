@@ -1,17 +1,10 @@
 FinancialControl::Application.routes.draw do
-  root :to => 'pages#index'
+  root to: 'pages#index'
   match 'licence' => 'pages#licence'
 
-  resources :entries, :only => [:show] do
-    collection do
-      post :quick_create
-    end
-    member do
-      put :quick_update
-    end
-  end
+  resources :entries, only: [:show, :create, :update]
 
-  resources :groups, :except => [:destroy] do
+  resources :groups, except: [:destroy] do
     member do
       post :add_user, :as => :add_user_to
       delete :remove_user, :as => :remove_user_from

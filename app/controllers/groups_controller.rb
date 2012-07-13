@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class GroupsController < ApplicationController
   before_filter :ensure_admin_user
   before_filter :load_group, :only => [:show, :edit, :update, :add_user, :remove_user, :time_frames, :add_time_frame, :remove_time_frame]

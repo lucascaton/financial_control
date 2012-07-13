@@ -42,26 +42,26 @@ function setupEditInPlaceFields(){
 
   entryTitle.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'text',
-    url:             '/entries/' + entryId + '/quick_update.js',
+    url:             '/entries/' + entryId,
     params:          '_method=put&attribute=title'
   }));
 
   entryKind.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'select',
     select_options:  [['Débito (-)', 'debit'], ['Crédito (+)', 'credit']],
-    url:             '/entries/' + entryId + '/quick_update.js',
+    url:             '/entries/' + entryId,
     params:          '_method=put&attribute=kind'
   }));
 
   entryDescription.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'textarea',
-    url:             '/entries/' + entryId + '/quick_update.js',
+    url:             '/entries/' + entryId,
     params:          '_method=put&attribute=description'
   }));
 
   entryValue.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'text',
-    url:             '/entries/' + entryId + '/quick_update.js',
+    url:             '/entries/' + entryId,
     params:          '_method=put&attribute=value',
     delegate:{
       didOpenEditInPlace: function(aDOMNode, aSettingsDict){
@@ -76,7 +76,7 @@ function setupEditInPlaceFields(){
 
   entryBillOn.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'text',
-    url:             '/entries/' + entryId + '/quick_update.js',
+    url:             '/entries/' + entryId,
     params:          '_method=put&attribute=bill_on',
     delegate:{
       didOpenEditInPlace: function(aDOMNode, aSettingsDict){
@@ -90,14 +90,14 @@ function setupEditInPlaceFields(){
   entryAutoDebit.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'select',
     select_options:  [['Sim', 't'], ['Não', 'f']],
-    url:             '/entries/' + entryId + '/quick_update.js',
+    url:             '/entries/' + entryId,
     params:          '_method=put&attribute=auto_debit'
   }));
 
   entryStatus.editInPlace($.extend(defaultEditInPlaceOptions,{
     field_type:      'select',
     select_options:  [['Pago!', 't'], ['Pendente...', 'f']],
-    url:             '/entries/' + entryId + '/quick_update.js',
+    url:             '/entries/' + entryId,
     params:          '_method=put&attribute=done'
   }));
 }
@@ -128,7 +128,7 @@ function configureFormNewEntry(){
           value       = $(this).find('#entry_value').val(),
           billOn      = $(this).find('#entry_bill_on_facebox').val();
 
-      $.post('/entries/quick_create', { time_frame_id: timeFrameId, kind: kind, title: title,
+      $.post('/entries', { time_frame_id: timeFrameId, kind: kind, title: title,
         description: description, value: value, bill_on: billOn }, function(data){
         if(data.successful){
           setFlashMessage('notice', 'Registro criado com sucesso.');
