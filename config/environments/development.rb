@@ -37,7 +37,4 @@ FinancialControl::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-
-  config.middleware.use 'Rack::Bug',
-    secret_key: '39f518c1f9793281ad0ed5a8b44efc4d037e8aada36714d70aacb08e51add32e'
 end

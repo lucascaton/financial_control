@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/brynary/rack-bug.git
-  revision: 1e6d33664fb21a5f08836e5d8a9d7bfcc47c8d81
-  branch: rails3
-  specs:
-    rack-bug (0.3.0)
-      rack (>= 1.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -243,7 +235,6 @@ DEPENDENCIES
   pg
   poltergeist
   pry
-  rack-bug!
   rails (= 3.2.6)
   rspec-rails
   ruby_parser
