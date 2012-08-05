@@ -14,7 +14,7 @@
 # Ignore config files
 /config/database.yml
 
-# Ignore files from db directory
+# Ignore the default SQLite database.
 /db/*.sqlite3
 
 # Ignore docs
