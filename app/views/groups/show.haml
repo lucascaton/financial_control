@@ -15,10 +15,10 @@
       %th=User.human_attribute_name :active
       %th.last &nbsp;
     -@group.users.each do |user|
-      %tr{:class => cycle('odd', 'even')}
+      %tr{ class: cycle('odd', 'even') }
         %td=user.id
-        %td{ :class => ('strike' unless user.active?) }=user.name
-        %td{ :class => ('strike' unless user.active?) }=user.email
+        %td{ class: ('strike' unless user.active?) }=user.name
+        %td{ class: ('strike' unless user.active?) }=user.email
         %td=l user.created_at, :format => :short
         %td=t user.admin.to_s
         %td=t user.active.to_s

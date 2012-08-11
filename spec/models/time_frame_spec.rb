@@ -19,7 +19,7 @@ describe TimeFrame do
                       end_on: Date.yesterday).should_not be_valid
   end
 
-  it 'is not valid if there is time frames with same period', focus: true do
+  it 'is not valid if there is time frames with same period' do
     group = FactoryGirl.create :group
     FactoryGirl.create :time_frame, group: group, start_on: 15.days.ago.to_date,
       end_on: 15.days.from_now.to_date
