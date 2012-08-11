@@ -36,11 +36,11 @@ class TimeFrame < ActiveRecord::Base
   private
   def ensure_end_on_is_after_start_on
     return if end_on.nil? || start_on.nil?
-    errors.add(:end_at, 'deve ser maior que data inicial') if end_on <= start_on
+    errors.add :end_at, 'deve ser maior que data inicial' if end_on <= start_on
   end
 
   def validate_overlaps
-    return unless group
+    return if group.nil?
 
     time_frames = group.time_frames.reload
     if time_frames.any?{  |time_frame| ((time_frame.start_on..time_frame.end_on).to_a & (self.start_on..self.end_on).to_a).present? }
