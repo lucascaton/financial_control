@@ -13,7 +13,7 @@ require File.expand_path('../support/factories', __FILE__)
 
 Rails.logger.level = 4 # reduce the IO during tests
 
-# Requires supporting ruby files with custom matchers and macros, etc,
+# Requires supporting ruby files with custom macros
 Dir['./spec/integration/macros/**/*.rb'].each { |f| require f }
 
 Capybara.configure do |config|
