@@ -13,7 +13,7 @@ gem 'unicorn'
 gem 'will_paginate'
 
 group :development do
-  gem 'annotate', '2.4.1.beta1'
+  gem 'annotate'
   gem 'guard-livereload'
   gem 'hpricot'
   gem 'lol_dba'
