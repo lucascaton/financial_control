@@ -10,6 +10,7 @@ pt-BR:
       unauthenticated: 'Para continuar, faça login!'
       unconfirmed: 'Antes de continuar, confirme a sua conta.'
       locked: 'Sua conta está bloqueada.'
+      not_found_in_database: 'Email ou senha inválidos.'
       invalid: 'Email ou senha inválidos.'
       invalid_token: 'O token de autenticação não é válido.'
       timeout: 'Sua sessão expirou, por favor faça login novamente para poder continuar.'

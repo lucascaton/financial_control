@@ -17,7 +17,9 @@ Rails.logger.level = 4 # reduce the IO during tests
 Dir['./spec/integration/macros/**/*.rb'].each { |f| require f }
 
 Capybara.configure do |config|
-  config.javascript_driver = :selenium # :poltergeist
+  # https://github.com/jonleighton/poltergeist/issues/60#issuecomment-7352918
+  # config.javascript_driver = :poltergeist
+  config.javascript_driver = :selenium
   config.ignore_hidden_elements = true
   config.default_selector = :css
   config.default_wait_time = 10

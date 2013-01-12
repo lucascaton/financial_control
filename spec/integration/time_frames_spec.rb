@@ -32,11 +32,13 @@ feature 'Time frame management', %q{
   end
 
   scenario 'Adding a time frame to a group' do
+    current_year = Date.today.year.to_s
+
     visit "/groups/#{@group.id}/time_frames"
     select 'Dezembro', :from => 'add_time_frame_period_2i'
-    select '2011', :from => 'add_time_frame_period_1i'
+    select current_year, :from => 'add_time_frame_period_1i'
     click_button 'Adicionar'
-    page.should have_content("Período \"01/12/2011 à 31/12/2011\" adicionado com sucesso neste grupo.")
+    page.should have_content("Período \"01/12/#{current_year} à 31/12/#{current_year}\" adicionado com sucesso neste grupo.")
   end
 
   scenario 'Trying to add a invalid time frame to a group' do

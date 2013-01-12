@@ -1,15 +1,15 @@
 source 'http://rubygems.org'
 
 gem 'awesome_print'
-gem 'devise'
+gem 'devise', '2.2.1'
 gem 'enumerate_it'
-gem 'haml'
-gem 'json'
+gem 'haml-rails'
 gem 'jquery-rails'
+gem 'json'
 gem 'pg'
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'settingslogic'
-gem 'unicorn'
+gem 'thin'
 gem 'will_paginate'
 
 group :development do
@@ -35,6 +35,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'forgery'
+  gem 'fuubar'
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'simplecov', :require => false
