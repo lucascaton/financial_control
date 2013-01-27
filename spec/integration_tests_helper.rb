@@ -11,7 +11,7 @@ require 'capybara/rails'
 require 'capybara/poltergeist'
 require File.expand_path('../support/factories', __FILE__)
 
-Rails.logger.level = 4 # reduce the IO during tests
+Rails.logger.level = 4 # Reduce the IO during tests
 
 # Requires supporting ruby files with custom macros
 Dir['./spec/integration/macros/**/*.rb'].each { |f| require f }
